@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ── HOME ── -->
+  <url>
+    <loc>https://www.chinemeremmadu.com/</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.chinemeremmadu.com/"/>
+  </url>
+
+  <!-- Add more <url> entries here as you build out new pages -->
+  <!-- Example:
+  <url>
+    <loc>https://www.chinemeremmadu.com/projects/meteo-agri-ci</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+
+</urlset>
