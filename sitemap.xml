@@ -11,14 +11,4 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://chinemeremmadu.vercel.app/"/>
   </url>
 
-  <!-- Add more <url> entries here as you build out new pages -->
-  <!-- Example:
-  <url>
-    <loc>https://www.chinemeremmadu.com/projects/meteo-agri-ci</loc>
-    <lastmod>2025-05-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  -->
-
 </urlset>
