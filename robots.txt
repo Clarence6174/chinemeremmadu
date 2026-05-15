@@ -1,4 +1,4 @@
-# robots.txt — chinemeremmadu.com
+# robots.txt — chinemeremmadu.vercel.app
 # Allow all well-behaved crawlers
 
 User-agent: *
@@ -9,7 +9,7 @@ Allow: /
 # Disallow: /drafts/
 
 # Sitemap location
-Sitemap: https://www.chinemeremmadu.com/sitemap.xml
+Sitemap: https://chinemeremmadu.vercel.app/
 
 # Crawl-delay hint for slower crawlers (optional)
 # Crawl-delay: 10
