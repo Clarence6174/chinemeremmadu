@@ -5,10 +5,20 @@
   <!-- ── HOME ── -->
   <url>
     <loc>https://chinemeremmadu.vercel.app/</loc>
-    <lastmod>2025-05-15</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://chinemeremmadu.vercel.app/"/>
   </url>
+
+  <!-- Add more <url> entries here as you build out new pages -->
+  <!-- Example:
+  <url>
+    <loc>https://chinemeremmadu.vercel.app/projects/meteo-agri-ci</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
 
 </urlset>
