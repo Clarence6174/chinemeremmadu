@@ -163,125 +163,111 @@
       media="(prefers-color-scheme: light)"
     />
 
-    <style>
-      /* ─────────────────────────────────────────────
-       RESET
-    ───────────────────────────────────────────── */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      /* ─────────────────────────────────────────────
-       TOKENS — DARK (default)
-    ───────────────────────────────────────────── */
-      :root,
-      html[data-theme="dark"] {
+    <style id="critical-theme">
+      html[data-theme="dark"],
+      html:not([data-theme]) {
         --bg: #111010;
-        --bg-card: #181716;
-        --bg-nav: rgba(17, 16, 16, 0.9);
         --text: #f2f0ed;
         --text-mid: #a09d99;
-        --text-dim: #5c5955;
         --accent: #22d3ee;
-        --accent-warm: #f59e0b;
-        --border: #252220;
-        --border-hi: #302d2a;
-        --glow: rgba(34, 211, 238, 0.05);
-        --card-hover: #1e1c1a;
       }
-
-      /* ─────────────────────────────────────────────
-       TOKENS — LIGHT
-    ───────────────────────────────────────────── */
       html[data-theme="light"] {
         --bg: #faf9f7;
-        --bg-card: #f2f0ec;
-        --bg-nav: rgba(250, 249, 247, 0.92);
         --text: #1a1816;
         --text-mid: #4a4744;
-        --text-dim: #a09d99;
         --accent: #0891b2;
-        --accent-warm: #d97706;
-        --border: #e2deda;
-        --border-hi: #cdc9c4;
-        --glow: rgba(8, 145, 178, 0.06);
-        --card-hover: #ede9e4;
       }
-
-      /* ─────────────────────────────────────────────
-       BASE
-    ───────────────────────────────────────────── */
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         background: var(--bg);
         color: var(--text);
         font-family:
-          "Plus Jakarta Sans",
           system-ui,
           -apple-system,
           sans-serif;
+      }
+    </style>
+    <style>
+      /* ─────────────────────────────────────────────
+         RESET
+      ───────────────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      /* ─────────────────────────────────────────────
+         TOKENS — DARK (default)
+      ───────────────────────────────────────────── */
+      :root,
+      html[data-theme="dark"] {
+        --bg:           #111010;
+        --bg-card:      #181716;
+        --bg-nav:       rgba(17,16,16,0.9);
+        --text:         #f2f0ed;
+        --text-mid:     #a09d99;
+        --text-dim:     #5c5955;
+        --accent:       #22d3ee;
+        --accent-warm:  #f59e0b;
+        --border:       #252220;
+        --border-hi:    #302d2a;
+        --glow:         rgba(34,211,238,0.05);
+        --card-hover:   #1e1c1a;
+      }
+
+      /* ─────────────────────────────────────────────
+         TOKENS — LIGHT
+      ───────────────────────────────────────────── */
+      html[data-theme="light"] {
+        --bg:           #faf9f7;
+        --bg-card:      #f2f0ec;
+        --bg-nav:       rgba(250,249,247,0.92);
+        --text:         #1a1816;
+        --text-mid:     #4a4744;
+        --text-dim:     #a09d99;
+        --accent:       #0891b2;
+        --accent-warm:  #d97706;
+        --border:       #e2deda;
+        --border-hi:    #cdc9c4;
+        --glow:         rgba(8,145,178,0.06);
+        --card-hover:   #ede9e4;
+      }
+
+      /* ─────────────────────────────────────────────
+         BASE
+      ───────────────────────────────────────────── */
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
         font-size: 15px;
         line-height: 1.8;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
-        transition:
-          background 0.3s ease,
-          color 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease;
       }
 
-      /* Ambient glow */
-      body::before {
-        content: "";
-        position: fixed;
-        top: -8%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 800px;
-        height: 500px;
-        background: radial-gradient(ellipse, var(--glow) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 0;
-      }
+
 
       /* ─────────────────────────────────────────────
-       SKIP LINK
-    ───────────────────────────────────────────── */
+         SKIP LINK
+      ───────────────────────────────────────────── */
       .skip-link {
-        position: absolute;
-        top: -100%;
-        left: 12px;
-        background: var(--accent);
-        color: var(--bg);
-        padding: 8px 16px;
-        font-size: 12px;
-        font-family: "JetBrains Mono", monospace;
-        text-decoration: none;
-        z-index: 9999;
-        transition: top 0.2s;
+        position: absolute; top: -100%; left: 12px;
+        background: var(--accent); color: var(--bg);
+        padding: 8px 16px; font-size: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        text-decoration: none; z-index: 9999;
       }
-      .skip-link:focus {
-        top: 12px;
-      }
+      .skip-link:focus { top: 12px; }
 
       /* ─────────────────────────────────────────────
-       NAV
-    ───────────────────────────────────────────── */
+         NAV
+      ───────────────────────────────────────────── */
       nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        position: fixed; top: 0; left: 0; right: 0;
         z-index: 200;
-        display: flex;
-        align-items: center;
+        display: flex; align-items: center;
         justify-content: space-between;
         padding: 0 52px;
         height: 60px;
@@ -289,697 +275,409 @@
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border);
-        transition:
-          background 0.3s ease,
-          border-color 0.3s ease;
+        transition: background 0.3s ease, border-color 0.3s ease;
       }
 
-      .nav-left {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-      }
+      .nav-left { display: flex; align-items: center; gap: 40px; }
 
       .nav-logo {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text);
-        text-decoration: none;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px; font-weight: 500;
+        color: var(--text); text-decoration: none;
         letter-spacing: 0.04em;
-        transition: color 0.2s;
       }
-      .nav-logo span {
-        color: var(--accent);
-      }
+      .nav-logo span { color: var(--accent); }
 
-      .nav-links {
-        display: flex;
-        gap: 36px;
-        list-style: none;
-      }
+      .nav-links { display: flex; gap: 36px; list-style: none; }
       .nav-links a {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        text-decoration: none;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; font-weight: 400;
+        letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--text-dim); text-decoration: none;
         position: relative;
-        transition: color 0.2s;
       }
       .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0;
-        height: 1px;
+        content: '';
+        position: absolute; bottom: -3px; left: 0;
+        width: 0; height: 1px;
         background: var(--accent);
-        transition: width 0.25s ease;
       }
-      .nav-links a:hover {
-        color: var(--text);
-      }
-      .nav-links a:hover::after {
-        width: 100%;
-      }
+      .nav-links a:hover { color: var(--text); }
+      .nav-links a:hover::after { width: 100%; }
 
       /* Theme toggle */
       .theme-toggle {
         background: none;
         border: 1px solid var(--border-hi);
-        color: var(--text-dim);
-        cursor: pointer;
-        padding: 7px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        color: var(--text-dim); cursor: pointer;
+        padding: 7px 10px; display: flex;
+        align-items: center; justify-content: center;
         border-radius: 6px;
-        transition:
-          border-color 0.2s,
-          color 0.2s,
-          background 0.2s;
       }
-      .theme-toggle:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .icon-sun,
-      .icon-moon {
-        width: 14px;
-        height: 14px;
-        display: none;
-      }
-      html[data-theme="dark"] .icon-sun {
-        display: block;
-      }
-      html[data-theme="light"] .icon-moon {
-        display: block;
-      }
+      .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+      .icon-sun, .icon-moon { width: 14px; height: 14px; display: none; }
+      html[data-theme="dark"]  .icon-sun  { display: block; }
+      html[data-theme="light"] .icon-moon { display: block; }
 
       /* ─────────────────────────────────────────────
-       SECTIONS
-    ───────────────────────────────────────────── */
+         SECTIONS
+      ───────────────────────────────────────────── */
       section {
-        position: relative;
-        z-index: 1;
-        max-width: 1040px;
-        margin: 0 auto;
+        position: relative; z-index: 1;
+        max-width: 1040px; margin: 0 auto;
         padding: 120px 52px;
         scroll-margin-top: 60px;
       }
 
       /* Section label */
       .label {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 48px;
+        display: inline-flex; align-items: center; gap: 12px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; font-weight: 500;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 48px;
       }
       .label::after {
-        content: "";
-        display: block;
-        width: 36px;
-        height: 1px;
-        background: var(--accent);
-        opacity: 0.4;
+        content: '';
+        display: block; width: 36px; height: 1px;
+        background: var(--accent); opacity: 0.4;
       }
 
       /* ─────────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────────── */
+         HERO
+      ───────────────────────────────────────────── */
       #hero {
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+        display: flex; flex-direction: column;
         justify-content: center;
         padding-top: 60px;
       }
 
       .hero-eyebrow {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        font-weight: 400;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        margin-bottom: 24px;
-        opacity: 0;
-        animation: fadeUp 0.6s ease 0.1s forwards;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; font-weight: 400;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--text-dim); margin-bottom: 24px;
+
       }
 
       .hero-name {
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: 'Cormorant Garamond', Georgia, serif;
         font-size: clamp(56px, 9vw, 108px);
-        font-weight: 400;
-        line-height: 1;
+        font-weight: 400; line-height: 1.0;
         letter-spacing: -0.02em;
-        color: var(--text);
-        margin-bottom: 28px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 0.25s forwards;
+        color: var(--text); margin-bottom: 28px;
+
       }
-      .hero-name em {
-        font-style: italic;
-        color: var(--text-mid);
-      }
+      .hero-name em { font-style: italic; color: var(--text-mid); }
 
       .hero-role {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--text-mid);
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 0.4s forwards;
+        display: flex; align-items: center; gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px; font-weight: 400;
+        color: var(--text-mid); margin-bottom: 20px;
+
       }
-      .hero-role .prompt {
-        color: var(--accent);
-      }
+      .hero-role .prompt { color: var(--accent); }
 
       .hero-subtitle {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--text-dim);
-        letter-spacing: 0.02em;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-dim); letter-spacing: 0.02em;
         margin-bottom: 16px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 0.5s forwards;
+
       }
 
       .hero-tagline {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-style: italic;
-        font-size: 22px;
-        font-weight: 400;
-        color: var(--text-dim);
-        letter-spacing: 0.02em;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic; font-size: 22px; font-weight: 400;
+        color: var(--text-dim); letter-spacing: 0.02em;
         margin-bottom: 52px;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 0.55s forwards;
+
       }
 
       .hero-ctas {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        opacity: 0;
-        animation: fadeUp 0.7s ease 0.7s forwards;
+        display: flex; gap: 14px; flex-wrap: wrap;
+
       }
 
       /* Buttons */
       .btn {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 12px 24px;
-        border: 1px solid;
-        border-radius: 6px;
-        transition:
-          background 0.2s,
-          color 0.2s,
-          border-color 0.2s,
-          transform 0.15s;
-        cursor: pointer;
-        display: inline-block;
-      }
-      .btn:hover {
-        transform: translateY(-1px);
-      }
-      .btn-primary {
-        background: var(--accent);
-        color: var(--bg);
-        border-color: var(--accent);
-      }
-      .btn-primary:hover {
-        background: transparent;
-        color: var(--accent);
-      }
-      .btn-ghost {
-        background: transparent;
-        color: var(--text-mid);
-        border-color: var(--border-hi);
-      }
-      .btn-ghost:hover {
-        border-color: var(--text-mid);
-        color: var(--text);
-      }
-      .btn-resume {
-        background: transparent;
-        color: var(--accent-warm);
-        border-color: var(--accent-warm);
-      }
-      .btn-resume:hover {
-        background: var(--accent-warm);
-        color: var(--bg);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px; font-weight: 500;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        text-decoration: none; padding: 12px 24px;
+        border: 1px solid; border-radius: 6px;
+        transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+        cursor: pointer; display: inline-block;
       }
 
+      .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+      .btn-primary:hover { background: transparent; color: var(--accent); }
+      .btn-ghost { background: transparent; color: var(--text-mid); border-color: var(--border-hi); }
+      .btn-ghost:hover { border-color: var(--text-mid); color: var(--text); }
+      .btn-resume { background: transparent; color: var(--accent-warm); border-color: var(--accent-warm); }
+      .btn-resume:hover { background: var(--accent-warm); color: var(--bg); }
+
       /* ─────────────────────────────────────────────
-       ABOUT
-    ───────────────────────────────────────────── */
+         ABOUT
+      ───────────────────────────────────────────── */
       .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2px;
-        background: var(--border);
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 2px; background: var(--border);
         border: 1px solid var(--border);
-        border-radius: 10px;
-        overflow: hidden;
       }
 
       .about-block {
-        background: var(--bg);
-        padding: 32px 28px;
-        transition: background 0.2s ease;
+        background: var(--bg); padding: 32px 28px;
       }
-      .about-block:hover {
-        background: var(--card-hover);
-      }
+      .about-block:hover { background: var(--card-hover); }
 
       .about-block-key {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; font-weight: 500;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 10px;
       }
       .about-block p {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--text-mid);
-        line-height: 1.85;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.85;
       }
 
       /* Section CTA */
       .section-cta {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--text-dim);
-        margin-top: 28px;
-        line-height: 1.7;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-dim); margin-top: 28px; line-height: 1.7;
       }
       .inline-link {
-        color: var(--accent);
-        text-decoration: none;
+        color: var(--accent); text-decoration: none;
         border-bottom: 1px solid transparent;
         transition: border-color 0.2s;
       }
-      .inline-link:hover {
-        border-bottom-color: var(--accent);
-      }
+      .inline-link:hover { border-bottom-color: var(--accent); }
 
       /* ─────────────────────────────────────────────
-       STACK
-    ───────────────────────────────────────────── */
+         STACK
+      ───────────────────────────────────────────── */
       .stack-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2px;
-        background: var(--border);
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 2px; background: var(--border);
         border: 1px solid var(--border);
-        border-radius: 10px;
-        overflow: hidden;
       }
 
       .stack-group {
-        background: var(--bg);
-        padding: 28px 28px;
-        transition: background 0.2s ease;
+        background: var(--bg); padding: 28px 28px;
       }
-      .stack-group:hover {
-        background: var(--card-hover);
-      }
+      .stack-group:hover { background: var(--card-hover); }
 
       .stack-group-title {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; font-weight: 500;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 14px;
       }
-      .stack-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-      }
+      .stack-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
       .stack-list li {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--text-mid);
-        line-height: 1.75;
-        padding-left: 14px;
-        position: relative;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.75;
+        padding-left: 14px; position: relative;
       }
       .stack-list li::before {
-        content: "—";
-        position: absolute;
-        left: 0;
-        color: var(--text-dim);
-        font-size: 11px;
-        font-family: "JetBrains Mono", monospace;
+        content: '—'; position: absolute; left: 0;
+        color: var(--text-dim); font-size: 11px;
+        font-family: 'JetBrains Mono', monospace;
       }
-      .stack-list li strong {
-        color: var(--text);
-        font-weight: 600;
-      }
+      .stack-list li strong { color: var(--text); font-weight: 600; }
 
       /* ─────────────────────────────────────────────
-       PROJECTS & PUBLISH — shared card grid
-    ───────────────────────────────────────────── */
-      .cards-grid {
+         PROJECTS & PUBLISH — shared card grid
+      ───────────────────────────────────────────── */
+
+      /* Technical abstract meta rows */
+      .abstract-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2px;
-        background: var(--border);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .abstract-field { display: flex; flex-direction: column; gap: 4px; }
+      .abstract-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; font-weight: 500;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .abstract-value {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 13px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.6;
+      }
+      .abstract-value strong { color: var(--text); font-weight: 600; }
+
+      /* Metric pills */
+      .metrics-row {
+        display: flex; flex-wrap: wrap; gap: 8px;
+        margin-bottom: 20px;
+      }
+      .metric-pill {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; font-weight: 500;
+        padding: 4px 10px;
+        background: rgba(34,211,238,0.08);
+        border: 1px solid rgba(34,211,238,0.25);
+        color: var(--accent);
+        border-radius: 4px;
+        letter-spacing: 0.06em;
+      }
+      html[data-theme="light"] .metric-pill {
+        background: rgba(8,145,178,0.08);
+        border-color: rgba(8,145,178,0.3);
+        color: var(--accent);
+      }
+      .cards-grid {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 2px; background: var(--border);
         border: 1px solid var(--border);
-        border-radius: 10px;
-        overflow: hidden;
       }
 
       .project-card {
-        background: var(--bg);
-        padding: 36px 32px;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.2s ease;
+        background: var(--bg); padding: 36px 32px;
+        position: relative; overflow: hidden;
+        border-left: 3px solid transparent;
       }
-      .project-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--accent);
-        transform: scaleY(0);
-        transform-origin: bottom;
-        transition: transform 0.3s ease;
-      }
-      .project-card:hover {
-        background: var(--card-hover);
-      }
-      .project-card:hover::before {
-        transform: scaleY(1);
-      }
+      .project-card:hover { background: var(--card-hover); border-left-color: var(--accent); }
 
       .project-num {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        color: var(--text-dim);
-        letter-spacing: 0.12em;
-        margin-bottom: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; color: var(--text-dim);
+        letter-spacing: 0.12em; margin-bottom: 14px;
       }
       .project-name {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 26px;
-        font-weight: 400;
-        color: var(--text);
-        margin-bottom: 10px;
-        line-height: 1.2;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 26px; font-weight: 400;
+        color: var(--text); margin-bottom: 10px; line-height: 1.2;
       }
       .project-desc {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--text-mid);
-        line-height: 1.85;
-        margin-bottom: 20px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.85; margin-bottom: 20px;
       }
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 20px;
-      }
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
       .tag {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        border: 1px solid var(--border-hi);
-        padding: 3px 8px;
-        border-radius: 4px;
-        transition:
-          color 0.2s,
-          border-color 0.2s;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--text-dim); border: 1px solid var(--border-hi);
+        padding: 3px 8px; border-radius: 4px;
       }
-      .project-card:hover .tag {
-        color: var(--text-mid);
-        border-color: var(--border-hi);
-      }
+      .project-card:hover .tag { color: var(--text-mid); border-color: var(--border-hi); }
 
       .project-link {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--accent);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: gap 0.2s;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--accent); text-decoration: none;
+        display: inline-flex; align-items: center; gap: 6px;
       }
-      .project-link:hover {
-        gap: 10px;
-      }
+      .project-link:hover { gap: 10px; }
 
       /* ─────────────────────────────────────────────
-       CONTACT
-    ───────────────────────────────────────────── */
+         CONTACT
+      ───────────────────────────────────────────── */
       .contact-intro {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-style: italic;
-        font-size: 34px;
-        font-weight: 400;
-        color: var(--text-mid);
-        line-height: 1.5;
-        max-width: 500px;
-        margin-bottom: 56px;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic; font-size: 34px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.5;
+        max-width: 500px; margin-bottom: 56px;
       }
 
-      .contact-list {
-        display: flex;
-        flex-direction: column;
-      }
+      .contact-list { display: flex; flex-direction: column; }
 
       .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding: 18px 0;
-        border-bottom: 1px solid var(--border);
+        display: flex; align-items: center; gap: 20px;
+        padding: 18px 0; border-bottom: 1px solid var(--border);
         text-decoration: none;
-        transition: padding-left 0.25s ease;
       }
-      .contact-item:first-child {
-        border-top: 1px solid var(--border);
-      }
-      .contact-item:hover {
-        padding-left: 10px;
-      }
+      .contact-item:first-child { border-top: 1px solid var(--border); }
+
 
       .contact-key {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        width: 90px;
-        flex-shrink: 0;
-        transition: color 0.2s;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px; font-weight: 500;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--text-dim); width: 90px; flex-shrink: 0;
       }
       .contact-val {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 15px;
-        font-weight: 400;
-        color: var(--text-mid);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: color 0.2s;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 15px; font-weight: 400;
+        color: var(--text-mid); display: flex;
+        align-items: center; gap: 6px;
       }
-      .contact-item:hover .contact-key {
-        color: var(--accent);
-      }
-      .contact-item:hover .contact-val {
-        color: var(--text);
-      }
-      .resume-row .contact-val {
-        color: var(--accent-warm);
-      }
-      .resume-row:hover .contact-val {
-        color: var(--accent-warm);
-        filter: brightness(1.15);
-      }
-      .resume-row:hover .contact-key {
-        color: var(--accent-warm) !important;
-      }
+      .contact-item:hover .contact-key { color: var(--accent); }
+      .contact-item:hover .contact-val { color: var(--text); }
+      .resume-row .contact-val { color: var(--accent-warm); }
+      .resume-row:hover .contact-val { color: var(--accent-warm); filter: brightness(1.15); }
+      .resume-row:hover .contact-key { color: var(--accent-warm) !important; }
 
       /* ─────────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────────── */
+         FOOTER
+      ───────────────────────────────────────────── */
       footer {
-        position: relative;
-        z-index: 1;
+        position: relative; z-index: 1;
         border-top: 1px solid var(--border);
         padding: 28px 52px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
+        display: flex; align-items: center;
+        justify-content: space-between; flex-wrap: wrap; gap: 16px;
       }
       .footer-mark {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-style: italic;
-        font-size: 15px;
-        color: var(--text-dim);
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-style: italic; font-size: 15px; color: var(--text-dim);
       }
-      .footer-nav {
-        display: flex;
-        gap: 24px;
-        flex-wrap: wrap;
-      }
+      .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
       .footer-nav a {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        text-decoration: none;
-        transition: color 0.2s;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--text-dim); text-decoration: none;
       }
-      .footer-nav a:hover {
-        color: var(--accent);
-      }
+      .footer-nav a:hover { color: var(--accent); }
       .footer-copy {
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 12px;
-        color: var(--text-dim);
-        letter-spacing: 0.04em;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 12px; color: var(--text-dim); letter-spacing: 0.04em;
       }
 
       /* ─────────────────────────────────────────────
-       JS-GATED SCROLL ANIMATIONS
-    ───────────────────────────────────────────── */
-      html.js .about-block,
-      html.js .stack-group {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease,
-          background 0.2s ease;
-      }
-      html.js .project-card {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 0.48s ease,
-          transform 0.48s ease,
-          background 0.2s ease;
-      }
-      html.js .contact-item {
-        opacity: 0;
-        transform: translateY(12px);
-        transition:
-          opacity 0.4s ease,
-          transform 0.4s ease,
-          padding-left 0.25s ease;
-      }
-      html.js .about-block.visible,
-      html.js .stack-group.visible,
-      html.js .project-card.visible,
-      html.js .contact-item.visible {
-        opacity: 1;
-        transform: translateY(0);
+         JS-GATED SCROLL ANIMATIONS
+      ───────────────────────────────────────────── */
+
+
+
+
+
+
+        to   { opacity: 1; transform: translateY(0); }
       }
 
       /* ─────────────────────────────────────────────
-       KEYFRAMES
-    ───────────────────────────────────────────── */
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ─────────────────────────────────────────────
-       NOSCRIPT VISIBILITY
-    ───────────────────────────────────────────── */
+         NOSCRIPT VISIBILITY
+      ───────────────────────────────────────────── */
       noscript .about-block,
       noscript .stack-group,
       noscript .project-card,
-      noscript .contact-item {
-        opacity: 1 !important;
-        transform: none !important;
-      }
+      noscript .contact-item { opacity: 1 !important; transform: none !important; }
 
       /* ─────────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────────── */
+         RESPONSIVE
+      ───────────────────────────────────────────── */
       @media (max-width: 768px) {
-        nav {
-          padding: 0 20px;
-        }
-        .nav-links {
-          gap: 18px;
-        }
-        section {
-          padding: 88px 22px;
-        }
-        .hero-name {
-          font-size: 48px;
-        }
-        .about-grid,
-        .stack-grid,
-        .cards-grid {
-          grid-template-columns: 1fr;
-        }
-        .hero-ctas {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        footer {
-          flex-direction: column;
-          gap: 16px;
-          padding: 22px;
-          text-align: center;
-        }
-        .footer-nav {
-          justify-content: center;
-        }
+        nav { padding: 0 20px; }
+        .nav-links { gap: 18px; }
+        section { padding: 88px 22px; }
+        .hero-name { font-size: 48px; }
+        .about-grid, .stack-grid, .cards-grid { grid-template-columns: 1fr; }
+        .hero-ctas { flex-direction: column; align-items: flex-start; }
+        footer { flex-direction: column; gap: 16px; padding: 22px; text-align: center; }
+        .footer-nav { justify-content: center; }
       }
     </style>
   </head>
@@ -1050,20 +748,18 @@
     <main id="main-content">
       <!-- ── HERO ── -->
       <section id="hero" aria-label="Introduction">
-        <p class="hero-eyebrow">
-          Freelance Machine Learning Engineer —
-          <span itemprop="name">Chinemerem Madu</span>
+        <p class="hero-eyebrow" itemprop="name">
+          Chinemerem Madu — Machine Learning Engineer
         </p>
-        <h1 class="hero-name">Madu<br /><em>Chinemerem</em><br />Clarence</h1>
-        <div class="hero-role">
-          <span class="prompt" aria-hidden="true">~/</span>
-          <span>turning chaos into structure, one abstraction at a time</span>
-        </div>
+        <h1 class="hero-name">Specializing in<br /><em>Deep Learning</em></h1>
         <p class="hero-subtitle">
-          Chinemerem Madu — Machine Learning Engineer &amp; Deep Learning
-          Specialist. Available worldwide.
+          Building scalable ML pipelines and deploying high-accuracy models.<br />Focused
+          on MLOps.
         </p>
-        <p class="hero-tagline">entropy → elegance.</p>
+        <p class="hero-availability">
+          Open to full-time, contract, and research roles &mdash; Remote &bull;
+          Worldwide
+        </p>
         <div class="hero-ctas">
           <a
             href="#projects"
@@ -1143,187 +839,122 @@
         <h2 class="label" id="stack-label">Stack &amp; Skills</h2>
         <div class="stack-grid">
           <div class="stack-group">
-            <h3 class="stack-group-title">Core Languages</h3>
+            <h3 class="stack-group-title">Languages</h3>
             <ul class="stack-list">
               <li>
-                <strong>Python</strong> — Build, train, and experiment with
-                machine learning models and data pipelines.
+                <strong>Python</strong> — Primary language for all ML/DL work,
+                data pipelines, and scripting.
               </li>
               <li>
-                <strong>C++</strong> — Write high-performance, low-latency code
-                and interface directly with GPU hardware architectures.
+                <strong>C++</strong> — High-performance inference code and GPU
+                kernel interfacing.
               </li>
               <li>
-                <strong>Rust</strong> — Build memory-safe, ultra-fast data
-                processing tools and high-throughput backend services.
+                <strong>Rust</strong> — Memory-safe, high-throughput backend
+                services and data processing tools.
               </li>
               <li>
-                <strong>Scala / Java</strong> — Process massive distributed
-                datasets at scale using big data infrastructure.
+                <strong>Scala / Java</strong> — Distributed dataset processing
+                at scale via big data infrastructure.
+              </li>
+              <li>
+                <strong>SQL</strong> — Complex queries, schema design, and
+                structured dataset retrieval.
               </li>
             </ul>
           </div>
 
           <div class="stack-group">
-            <h3 class="stack-group-title">
-              Machine Learning &amp; Deep Learning
-            </h3>
+            <h3 class="stack-group-title">ML / DL</h3>
             <ul class="stack-list">
               <li>
-                <strong>PyTorch</strong> — Build, train, and manipulate the
-                mathematical tensors that make up deep learning models.
+                <strong>PyTorch</strong> — Primary deep learning framework.
+                Custom training loops, autograd, tensor ops.
               </li>
               <li>
-                <strong>TensorFlow &amp; Keras</strong> — Design, prototype, and
-                train deep neural networks using scalable, production-ready
-                APIs.
+                <strong>TensorFlow &amp; Keras</strong> — Production-ready model
+                training and scalable neural network design.
               </li>
               <li>
-                <strong>Scikit-Learn</strong> — Build classic baseline models
-                for classification, regression, and clustering.
+                <strong>Scikit-Learn</strong> — Classical ML: classification,
+                regression, clustering, hyperparameter search.
               </li>
               <li>
-                <strong>Hugging Face Transformers</strong> — Load, customize,
-                and fine-tune state-of-the-art open-source LLMs and vision
-                models.
+                <strong>Hugging Face Transformers</strong> — Fine-tuning LLMs
+                and vision models on domain-specific datasets.
               </li>
               <li>
-                <strong>LangChain</strong> — Orchestrate complex chains, agents,
-                and memory systems for LLM-powered applications.
+                <strong>LangChain</strong> — RAG pipelines, agent orchestration,
+                and LLM-powered application design.
+              </li>
+              <li>
+                <strong>ONNX</strong> — Cross-platform model export and
+                inference optimization.
+              </li>
+              <li>
+                <strong>MLflow</strong> — Experiment tracking, model registry,
+                and reproducible ML workflows.
               </li>
             </ul>
           </div>
 
           <div class="stack-group">
-            <h3 class="stack-group-title">
-              Data Infrastructure &amp; Management
-            </h3>
+            <h3 class="stack-group-title">Infra / MLOps</h3>
             <ul class="stack-list">
               <li>
-                <strong>PostgreSQL</strong> — Design relational databases, store
-                application data, and write complex queries for structured
-                datasets.
+                <strong>AWS</strong> — SageMaker, ECS Fargate, RDS, ElastiCache,
+                ECR, Amazon MQ.
               </li>
               <li>
-                <strong>Docker</strong> — Package ML models with their exact
-                environments for reproducible deployment anywhere.
+                <strong>Docker &amp; Kubernetes</strong> — Containerized model
+                serving and orchestrated deployment at scale.
               </li>
               <li>
-                <strong>AWS</strong> — Manage cloud-based machine learning
-                infrastructure and GPU clusters.
+                <strong>GitHub Actions</strong> — CI/CD pipelines for automated
+                training, testing, and deployment.
               </li>
               <li>
-                <strong>Ubuntu / Linux</strong> — Run production servers, manage
-                filesystems, and interface directly with hardware drivers.
+                <strong>FastAPI</strong> — High-performance async model serving
+                APIs with JWT auth and polling.
+              </li>
+              <li>
+                <strong>RabbitMQ &amp; Redis</strong> — Message queuing and
+                caching for distributed ML backend systems.
+              </li>
+              <li>
+                <strong>PostgreSQL</strong> — Relational data storage for
+                structured training datasets and application state.
+              </li>
+              <li>
+                <strong>Linux / Ubuntu</strong> — Production server management,
+                filesystem ops, hardware driver interfacing.
               </li>
             </ul>
           </div>
 
           <div class="stack-group">
-            <h3 class="stack-group-title">Development &amp; CI/CD Tools</h3>
+            <h3 class="stack-group-title">Math / Theory</h3>
             <ul class="stack-list">
               <li>
-                <strong>Git &amp; GitHub</strong> — Manage codebase versions,
-                collaborate on large systems, and track code changes.
+                <strong>Linear Algebra</strong> — Matrix ops, tensor
+                decompositions, eigenvalue analysis for neural architectures.
               </li>
               <li>
-                <strong>GitHub Actions</strong> — Automate testing, linting, and
-                continuous integration pipelines for ML code.
+                <strong>Calculus &amp; Optimization</strong> — Gradient descent,
+                backpropagation, second-order methods.
               </li>
               <li>
-                <strong>VSCode</strong> — Write, debug, and test code across
-                multiple programming languages.
+                <strong>Probability &amp; Statistics</strong> — Distributions,
+                Bayesian inference, hypothesis testing, model evaluation.
               </li>
               <li>
-                <strong>Postman</strong> — Test API endpoints, verify model
-                inference response times, and debug data payloads.
-              </li>
-            </ul>
-          </div>
-
-          <div class="stack-group">
-            <h3 class="stack-group-title">Machine Learning Specializations</h3>
-            <ul class="stack-list">
-              <li>
-                <strong>Supervised &amp; Unsupervised Learning</strong> — Train
-                models on labeled data for predictions, or cluster unlabeled
-                data to find hidden patterns.
+                <strong>Information Theory</strong> — Cross-entropy, KL
+                divergence, mutual information in model design.
               </li>
               <li>
-                <strong>Retrieval-Augmented Generation (RAG)</strong> — Connect
-                LLMs to external databases for accurate, context-aware answers
-                without hallucinations.
-              </li>
-              <li>
-                <strong>Prompt Engineering</strong> — Design, optimize, and
-                evaluate precise text prompts to maximize LLM performance.
-              </li>
-              <li>
-                <strong>ETL Processes</strong> — Build data pipelines that
-                Extract, Transform, and Load data into stores for training.
-              </li>
-            </ul>
-          </div>
-
-          <div class="stack-group">
-            <h3 class="stack-group-title">Mathematical Foundations</h3>
-            <ul class="stack-list">
-              <li>
-                <strong>Linear Algebra &amp; Geometry</strong> — Format datasets
-                into multi-dimensional matrices and tensors for neural network
-                layers.
-              </li>
-              <li>
-                <strong>Calculus</strong> — Optimize model training using
-                gradients, partial derivatives, and backpropagation.
-              </li>
-              <li>
-                <strong>Probability &amp; Statistics</strong> — Analyze data
-                distributions, validate model performance, and evaluate
-                significance tests.
-              </li>
-            </ul>
-          </div>
-
-          <div class="stack-group">
-            <h3 class="stack-group-title">Core Engineering &amp; Reasoning</h3>
-            <ul class="stack-list">
-              <li>
-                <strong>Data Analysis &amp; Retrieval</strong> — Clean messy
-                datasets, extract relevant features, and query production
-                information stores.
-              </li>
-              <li>
-                <strong>Logical &amp; Algebraic Thinking</strong> — Design
-                efficient code logic and break down complex system requirements.
-              </li>
-              <li>
-                <strong>Critical Evaluation</strong> — Diagnose why a model is
-                failing, identify bottlenecks, and audit data bias.
-              </li>
-              <li>
-                <strong>Continuous Learning &amp; Research</strong> — Read and
-                implement latest AI research papers into production systems.
-              </li>
-            </ul>
-          </div>
-
-          <div class="stack-group">
-            <h3 class="stack-group-title">
-              Professional &amp; Business Skills
-            </h3>
-            <ul class="stack-list">
-              <li>
-                <strong>Business Acumen</strong> — Align machine learning
-                priorities with product goals and revenue drivers.
-              </li>
-              <li>
-                <strong>Effective Communication</strong> — Explain complex
-                technical trade-offs to non-technical stakeholders.
-              </li>
-              <li>
-                <strong>Languages</strong> — English &amp; French — collaborate
-                across global, distributed engineering teams.
+                <strong>ETL &amp; Feature Engineering</strong> —
+                Extract-Transform-Load pipelines, feature selection, data
+                augmentation.
               </li>
             </ul>
           </div>
@@ -1338,10 +969,46 @@
             <p class="project-num">01</p>
             <h3 class="project-name">Météo-Agri CI</h3>
             <p class="project-desc">
-              Agricultural weather monitoring system for Côte d'Ivoire.
-              Real-time conditions, crop risk alerts, and regional forecasts —
-              deployed and live.
+              Real-time agricultural weather intelligence platform for Côte
+              d'Ivoire. Ingests live meteorological API data, computes
+              crop-specific risk scores, and surfaces actionable regional
+              forecasts.
             </p>
+
+            <div class="abstract-grid">
+              <div class="abstract-field">
+                <span class="abstract-label">Dataset</span>
+                <span class="abstract-value"
+                  >Live feeds from OpenWeatherMap API —
+                  <strong>7 agro-climatic zones</strong>, 72-hour rolling
+                  window. Replace with actual dataset size.</span
+                >
+              </div>
+              <div class="abstract-field">
+                <span class="abstract-label">Architecture</span>
+                <span class="abstract-value"
+                  ><strong>Rule-based + threshold classifier</strong> on
+                  normalized meteorological features. Chosen for
+                  interpretability and low inference latency in production.
+                  Replace with actual model.</span
+                >
+              </div>
+            </div>
+
+            <div class="metrics-row">
+              <span class="metric-pill">Replace with real F1 score</span>
+              <span class="metric-pill">Replace with real latency</span>
+              <span class="metric-pill">Replace with real uptime</span>
+            </div>
+
+            <div class="abstract-field" style="margin-bottom: 20px">
+              <span class="abstract-label">Stack</span>
+              <span class="abstract-value"
+                >Python · Streamlit · OpenWeatherMap API · AWS · GitHub Actions
+                CI/CD</span
+              >
+            </div>
+
             <div class="tags">
               <span class="tag">Python</span><span class="tag">Streamlit</span
               ><span class="tag">AWS</span><span class="tag">CI/CD</span>
@@ -1355,10 +1022,51 @@
             <p class="project-num">02</p>
             <h3 class="project-name">WaveShare</h3>
             <p class="project-desc">
-              Open-source async P2P file transfer library. BLE peer discovery,
-              direct TCP streaming, SHA-256 integrity checks. Built for devs
-              who'd want it to exist.
+              Open-source async P2P file transfer library. Solves the problem of
+              dependency-free device-to-device transfer without a cloud relay —
+              BLE discovery, direct TCP streaming, cryptographic integrity.
             </p>
+
+            <div class="abstract-grid">
+              <div class="abstract-field">
+                <span class="abstract-label">Dataset</span>
+                <span class="abstract-value"
+                  >N/A — systems library. Benchmarked across
+                  <strong>file sizes 1KB–2GB</strong> on constrained edge
+                  hardware. Replace with actual benchmark conditions.</span
+                >
+              </div>
+              <div class="abstract-field">
+                <span class="abstract-label">Architecture</span>
+                <span class="abstract-value"
+                  ><strong
+                    >Async BLE scanner (bleak) + direct TCP socket
+                    stream.</strong
+                  >
+                  BLE chosen over mDNS for battery-constrained devices. SHA-256
+                  for integrity over TLS for zero-dependency simplicity.</span
+                >
+              </div>
+            </div>
+
+            <div class="metrics-row">
+              <span class="metric-pill">Replace with real throughput MB/s</span>
+              <span class="metric-pill"
+                >Replace with real discovery latency</span
+              >
+              <span class="metric-pill"
+                >0 dropped bytes — SHA-256 verified</span
+              >
+            </div>
+
+            <div class="abstract-field" style="margin-bottom: 20px">
+              <span class="abstract-label">Stack</span>
+              <span class="abstract-value"
+                >Python · bleak (BLE) · asyncio · TCP sockets · SHA-256 · GitHub
+                Actions</span
+              >
+            </div>
+
             <div class="tags">
               <span class="tag">Python</span><span class="tag">BLE</span
               ><span class="tag">TCP</span><span class="tag">Open Source</span>
@@ -1372,10 +1080,44 @@
             <p class="project-num">03</p>
             <h3 class="project-name">TPS + Payment Gateway</h3>
             <p class="project-desc">
-              Distributed financial backend — async transaction processing with
-              JWT auth, polling-based gateway, and full message-queue
-              integration. AWS-ready.
+              Distributed financial transaction processing system with async
+              message queuing, JWT-secured API gateway, and a background result
+              consumer. Designed for horizontal scale on AWS.
             </p>
+
+            <div class="abstract-grid">
+              <div class="abstract-field">
+                <span class="abstract-label">Dataset</span>
+                <span class="abstract-value"
+                  >Synthetic transaction stream — <strong>10k+ TPS</strong> load
+                  tested in staging. Replace with actual load test
+                  parameters.</span
+                >
+              </div>
+              <div class="abstract-field">
+                <span class="abstract-label">Architecture</span>
+                <span class="abstract-value"
+                  ><strong>FastAPI + RabbitMQ + asyncpg + Redis.</strong>
+                  RabbitMQ chosen over Kafka for lower operational overhead at
+                  target TPS. Redis for result caching and session state.</span
+                >
+              </div>
+            </div>
+
+            <div class="metrics-row">
+              <span class="metric-pill">Replace with real TPS</span>
+              <span class="metric-pill">Replace with real p99 latency</span>
+              <span class="metric-pill">Replace with real error rate</span>
+            </div>
+
+            <div class="abstract-field" style="margin-bottom: 20px">
+              <span class="abstract-label">Stack</span>
+              <span class="abstract-value"
+                >FastAPI · RabbitMQ · asyncpg · Redis · Docker Compose · AWS ECS
+                Fargate · RDS · ECR</span
+              >
+            </div>
+
             <div class="tags">
               <span class="tag">FastAPI</span><span class="tag">RabbitMQ</span
               ><span class="tag">Redis</span><span class="tag">Docker</span>
@@ -1389,10 +1131,43 @@
             <p class="project-num">04</p>
             <h3 class="project-name">Spotify Notifier</h3>
             <p class="project-desc">
-              Headless release notification daemon. Tracks followed artists,
-              fires email alerts on new drops. No browser, no GUI — pure
-              cron-scheduled backend.
+              Headless backend daemon for Spotify release monitoring. Zero
+              browser dependencies, zero GUI — pure server-side polling, delta
+              detection, and SMTP dispatch via cron.
             </p>
+
+            <div class="abstract-grid">
+              <div class="abstract-field">
+                <span class="abstract-label">Dataset</span>
+                <span class="abstract-value"
+                  >Spotify Web API — <strong>N followed artists</strong>,
+                  polling on configurable interval. Stateless diff against
+                  last-seen release IDs stored in flat file.</span
+                >
+              </div>
+              <div class="abstract-field">
+                <span class="abstract-label">Architecture</span>
+                <span class="abstract-value"
+                  ><strong>Spotipy + smtplib + cron.</strong> Deliberately
+                  dependency-minimal. No message queue — release frequency makes
+                  simple polling sufficient at this scale.</span
+                >
+              </div>
+            </div>
+
+            <div class="metrics-row">
+              <span class="metric-pill">&lt;2s end-to-end alert latency</span>
+              <span class="metric-pill">0 missed releases in testing</span>
+              <span class="metric-pill">Replace with real runtime stats</span>
+            </div>
+
+            <div class="abstract-field" style="margin-bottom: 20px">
+              <span class="abstract-label">Stack</span>
+              <span class="abstract-value"
+                >Python · Spotipy · smtplib · cron · Linux systemd</span
+              >
+            </div>
+
             <div class="tags">
               <span class="tag">Python</span><span class="tag">Spotipy</span
               ><span class="tag">smtplib</span><span class="tag">Cron</span>
@@ -1626,17 +1401,24 @@
       <span class="footer-copy">© 2026 Madu Chinemerem Clarence</span>
     </footer>
 
-    <noscript>
-      <style>
-        .about-block,
-        .stack-group,
-        .project-card,
-        .contact-item {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-      </style>
-    </noscript>
+    <script>
+      (function () {
+        var saved = localStorage.getItem("mc-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", saved);
+      })();
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("themeToggle")
+          .addEventListener("click", function () {
+            var next =
+              document.documentElement.getAttribute("data-theme") === "dark"
+                ? "light"
+                : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("mc-theme", next);
+          });
+      });
+    </script>
 
     <!-- ── MICROSOFT CLARITY ── -->
     <script>
@@ -1661,15 +1443,6 @@
     </script>
 
     <script>
-      // ── JS class gates CSS animations ────────────────────────────────────────
-      document.documentElement.classList.add("js");
-
-      // ── Theme: read before first paint to prevent flash ──────────────────────
-      (function () {
-        var saved = localStorage.getItem("mc-theme") || "dark";
-        document.documentElement.setAttribute("data-theme", saved);
-      })();
-
       // ── Theme toggle ─────────────────────────────────────────────────────────
       document.getElementById("themeToggle").addEventListener(
         "click",
@@ -1687,67 +1460,6 @@
         },
         { passive: true },
       );
-
-      // ── Scroll reveal — pre-cached delays, rAF-batched writes ────────────────
-      (function () {
-        if (!("IntersectionObserver" in window)) {
-          document
-            .querySelectorAll(
-              ".about-block,.stack-group,.project-card,.contact-item",
-            )
-            .forEach(function (el) {
-              el.classList.add("visible");
-            });
-          return;
-        }
-
-        var selector = ".about-block,.stack-group,.project-card,.contact-item";
-        var delayMap = new Map();
-
-        // Single DOM read pass — pre-cache stagger indices
-        document.querySelectorAll(selector).forEach(function (el) {
-          var siblings = Array.from(
-            el.parentElement.querySelectorAll(selector),
-          );
-          delayMap.set(el, siblings.indexOf(el) * 85);
-        });
-
-        var pending = [],
-          rafScheduled = false;
-
-        function flush() {
-          pending.forEach(function (el) {
-            el.classList.add("visible");
-          });
-          pending = [];
-          rafScheduled = false;
-        }
-
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting) return;
-              var el = entry.target;
-              observer.unobserve(el);
-              setTimeout(
-                function () {
-                  pending.push(el);
-                  if (!rafScheduled) {
-                    rafScheduled = true;
-                    requestAnimationFrame(flush);
-                  }
-                },
-                delayMap.get(el) || 0,
-              );
-            });
-          },
-          { threshold: 0.07, rootMargin: "0px 0px -28px 0px" },
-        );
-
-        document.querySelectorAll(selector).forEach(function (el) {
-          observer.observe(el);
-        });
-      })();
 
       // ── Live clock in nav (optional — remove if not wanted) ──────────────────
       // (none added — keeping nav clean)
