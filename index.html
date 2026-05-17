@@ -142,14 +142,14 @@
     <!-- Async font loading — non-blocking -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       media="print"
       onload="this.media = 'all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       />
     </noscript>
 
@@ -237,9 +237,11 @@
       body {
         background: var(--bg);
         color: var(--text);
-        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-        font-size: 15px;
-        line-height: 1.8;
+        font-family: 'Plus Jakarta Sans', Arial, system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.85;
+        letter-spacing: 0.01em;
+        word-spacing: 0.04em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
@@ -301,8 +303,9 @@
         position: absolute; bottom: -3px; left: 0;
         width: 0; height: 1px;
         background: var(--accent);
+        transition: width 0.2s ease;
       }
-      .nav-links a:hover { color: var(--text); }
+      .nav-links a:hover { color: var(--text); transition: color 0.15s; }
       .nav-links a:hover::after { width: 100%; }
 
       /* Theme toggle */
@@ -313,6 +316,7 @@
         padding: 7px 10px; display: flex;
         align-items: center; justify-content: center;
         border-radius: 6px;
+        transition: border-color 0.15s, color 0.15s;
       }
       .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
       .icon-sun, .icon-moon { width: 14px; height: 14px; display: none; }
@@ -440,9 +444,10 @@
         color: var(--accent); margin-bottom: 10px;
       }
       .about-block p {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.85;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 15px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.9;
+        letter-spacing: 0.01em; word-spacing: 0.04em;
       }
 
       /* Section CTA */
@@ -480,10 +485,11 @@
       }
       .stack-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
       .stack-list li {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.75;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 15px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.85;
         padding-left: 14px; position: relative;
+        letter-spacing: 0.01em;
       }
       .stack-list li::before {
         content: '—'; position: absolute; left: 0;
@@ -511,9 +517,10 @@
         color: var(--text-dim);
       }
       .abstract-value {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 13px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.6;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 14px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.75;
+        letter-spacing: 0.01em;
       }
       .abstract-value strong { color: var(--text); font-weight: 600; }
 
@@ -548,7 +555,7 @@
         position: relative; overflow: hidden;
         border-left: 3px solid transparent;
       }
-      .project-card:hover { background: var(--card-hover); border-left-color: var(--accent); }
+      .project-card:hover { background: var(--card-hover); border-left-color: var(--accent); transition: border-left-color 0.15s, background 0.15s; }
 
       .project-num {
         font-family: 'JetBrains Mono', monospace;
@@ -556,14 +563,16 @@
         letter-spacing: 0.12em; margin-bottom: 14px;
       }
       .project-name {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: 26px; font-weight: 400;
-        color: var(--text); margin-bottom: 10px; line-height: 1.2;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 20px; font-weight: 700;
+        color: var(--text); margin-bottom: 10px; line-height: 1.25;
+        letter-spacing: -0.01em;
       }
       .project-desc {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.85; margin-bottom: 20px;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 15px; font-weight: 400;
+        color: var(--text-mid); line-height: 1.9; margin-bottom: 20px;
+        letter-spacing: 0.01em; word-spacing: 0.04em;
       }
       .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
       .tag {
@@ -586,10 +595,11 @@
          CONTACT
       ───────────────────────────────────────────── */
       .contact-intro {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-style: italic; font-size: 34px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.5;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+        font-size: 28px; font-weight: 600;
+        color: var(--text); line-height: 1.4;
         max-width: 500px; margin-bottom: 56px;
+        letter-spacing: -0.01em;
       }
 
       .contact-list { display: flex; flex-direction: column; }
@@ -609,11 +619,14 @@
         color: var(--text-dim); width: 90px; flex-shrink: 0;
       }
       .contact-val {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
         font-size: 15px; font-weight: 400;
+        letter-spacing: 0.01em;
         color: var(--text-mid); display: flex;
         align-items: center; gap: 6px;
       }
+      .contact-key { transition: color 0.15s; }
+      .contact-val { transition: color 0.15s; }
       .contact-item:hover .contact-key { color: var(--accent); }
       .contact-item:hover .contact-val { color: var(--text); }
       .resume-row .contact-val { color: var(--accent-warm); }
@@ -631,8 +644,9 @@
         justify-content: space-between; flex-wrap: wrap; gap: 16px;
       }
       .footer-mark {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-style: italic; font-size: 15px; color: var(--text-dim);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px; color: var(--text-dim);
+        letter-spacing: 0.08em;
       }
       .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
       .footer-nav a {
@@ -748,16 +762,17 @@
     <main id="main-content">
       <!-- ── HERO ── -->
       <section id="hero" aria-label="Introduction">
-        <p class="hero-eyebrow" itemprop="name">
-          Chinemerem Madu — Machine Learning Engineer
+        <p class="hero-eyebrow">Machine Learning Engineer</p>
+        <h1 class="hero-name" itemprop="name">Madu Chinemerem Clarence</h1>
+        <p class="hero-name-sub">
+          Specializing in <em>Deep Learning</em> &amp; MLOps
         </p>
-        <h1 class="hero-name">Specializing in<br /><em>Deep Learning</em></h1>
         <p class="hero-subtitle">
-          Building scalable ML pipelines and deploying high-accuracy models.<br />Focused
-          on MLOps.
+          Building scalable ML pipelines and deploying high-accuracy models.
+          Focused on production ML systems that ship and stay shipped.
         </p>
         <p class="hero-availability">
-          Open to full-time, contract, and research roles &mdash; Remote &bull;
+          Open to full-time, contract &amp; research roles &mdash; Remote &bull;
           Worldwide
         </p>
         <div class="hero-ctas">
@@ -789,33 +804,38 @@
         <h2 class="label" id="about-label">About</h2>
         <div class="about-grid">
           <div class="about-block">
-            <p class="about-block-key">The Vibe</p>
+            <p class="about-block-key">Background</p>
             <p>
-              Freelance ML Engineer. I work best alone — mostly taking chaotic
-              data and quietly making it make sense. No fluff, just structure.
+              Freelance Machine Learning Engineer with hands-on experience
+              designing and deploying end-to-end ML systems — from raw data
+              ingestion to production inference. I work across the full stack:
+              data pipelines, model training, evaluation, and cloud deployment.
             </p>
           </div>
           <div class="about-block">
-            <p class="about-block-key">The Work</p>
+            <p class="about-block-key">Specialization</p>
             <p>
-              I build models that actually learn and pipelines that don't fall
-              over. Ideas out of the notebook, into production, without the
-              usual headache.
+              Deep learning, MLOps, and distributed backend infrastructure. I
+              focus on building systems that are reproducible, monitored, and
+              designed to stay reliable under real production load — not just in
+              a Jupyter notebook.
             </p>
           </div>
           <div class="about-block">
-            <p class="about-block-key">The Focus</p>
+            <p class="about-block-key">Approach</p>
             <p>
-              Living somewhere between end-to-end ML infra, optimizing code
-              until it's stupid-fast, and dropping open-source side quests
-              whenever I feel like it.
+              Every architectural decision is justified by the problem
+              constraints — dataset size, latency budget, compute cost, and
+              interpretability requirements. I choose the simplest model that
+              solves the problem verifiably well.
             </p>
           </div>
           <div class="about-block">
-            <p class="about-block-key">The Downtime</p>
+            <p class="about-block-key">Open Source</p>
             <p>
-              Screen closed, outside with a juice, unplugged. Though it's still
-              pretty wild that we can teach math to do things.
+              I build in public. Several of my tools exist because I needed them
+              and they didn't. Open source is how I verify my work against
+              real-world constraints beyond my own projects.
             </p>
           </div>
         </div>
