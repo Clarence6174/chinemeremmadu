@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── PRIMARY SEO ── -->
-    <title>Chinemerem Madu — ML Engineer</title>
+    <title>Chinemerem Madu — Machine Learning Engineer</title>
     <meta
       name="description"
       content="Chinemerem Madu | ML Engineer. I build models that learn and pipelines that don't fall over. Specialized in deep learning. Open to freelance &amp; open-source."
@@ -37,7 +37,7 @@
     <meta property="og:url" content="https://chinemeremmadu.vercel.app/" />
     <meta
       property="og:title"
-      content="Chinemerem Madu — Freelance ML Engineer"
+      content="Chinemerem Madu — Freelance Machine Learning Engineer"
     />
     <meta
       property="og:description"
@@ -56,7 +56,7 @@
     <meta name="twitter:creator" content="@It_is_clarence" />
     <meta
       name="twitter:title"
-      content="Chinemerem Madu — Freelance ML Engineer"
+      content="Chinemerem Madu — Freelance Machine Learning Engineer"
     />
     <meta
       name="twitter:description"
@@ -946,6 +946,53 @@
         transform: translateY(0);
       }
 
+      /* ── SECTION CTA ── */
+      .section-cta {
+        font-family: "Outfit", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-dim);
+        margin-top: 28px;
+        line-height: 1.7;
+      }
+      .inline-link {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+      .inline-link:hover {
+        border-bottom-color: var(--accent);
+      }
+
+      /* ── FOOTER NAV ── */
+      .footer-nav {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .footer-nav a {
+        font-size: 10px;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-nav a:hover {
+        color: var(--accent);
+      }
+
+      @media (max-width: 768px) {
+        footer {
+          flex-direction: column;
+          gap: 16px;
+          align-items: center;
+        }
+      }
+
       /* ── ANIMATIONS ── */
       @keyframes riseIn {
         from {
@@ -1434,6 +1481,15 @@
             <a href="#" class="project-link">View project →</a>
           </article>
         </div>
+        <p class="section-cta">
+          I also write about ML engineering —
+          <a
+            href="#publish"
+            title="Read published papers and posts"
+            class="inline-link"
+            >read my published work</a
+          >.
+        </p>
       </section>
 
       <!-- ── PUBLISH ── -->
@@ -1518,6 +1574,12 @@
             <a href="#" class="project-link">View publish →</a>
           </article>
         </div>
+        <p class="section-cta">
+          Interested in collaborating?
+          <a href="#contact" title="Contact Chinemerem Madu" class="inline-link"
+            >get in touch</a
+          >.
+        </p>
       </section>
 
       <!-- ── CONTACT ── -->
@@ -1633,7 +1695,14 @@
     <!-- ── FOOTER ── -->
     <footer>
       <span class="footer-mark">entropy → elegance.</span>
-      <span class="footer-copy">© 2025 Madu Chinemerem Clarence</span>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#about" title="About Chinemerem Madu">About</a>
+        <a href="#stack" title="Tech Stack and Skills">Stack</a>
+        <a href="#projects" title="ML Engineering Projects">Projects</a>
+        <a href="#publish" title="Published Work">Publish</a>
+        <a href="#contact" title="Contact Chinemerem Madu">Contact</a>
+      </nav>
+      <span class="footer-copy">© 2026 Madu Chinemerem Clarence</span>
     </footer>
 
     <script>
