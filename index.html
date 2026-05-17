@@ -19,7 +19,10 @@
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="canonical" href="https://chinemeremmadu.vercel.app/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <!-- ── SEARCH CONSOLE VERIFICATION ── -->
     <meta
@@ -80,9 +83,9 @@
             "https://www.linkedin.com/in/chinemerem-madu-8875a93b0",
             "https://twitter.com/It_is_clarence",
             "https://medium.com/@chinemeremmadu",
+            "https://huggingface.co/ChinemeremMadu",
             "https://orcid.org/0009-0009-6911-2442",
-            "https://t.me/madu_clarence",
-            "https://huggingface.co/ChinemeremMadu"
+            "https://t.me/madu_clarence"
           ],
           "jobTitle": "Freelance Machine Learning Engineer",
           "worksFor": {
@@ -127,11 +130,23 @@
     </script>
 
     <!-- ── FONTS ── -->
+    <!-- Performance: preconnect + dns-prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    <link rel="dns-prefetch" href="https://orcid.org" />
+    <link rel="dns-prefetch" href="https://github.com" />
+    <link rel="dns-prefetch" href="https://huggingface.co" />
+    <link rel="dns-prefetch" href="https://medium.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap"
     />
 
     <!-- ── FAVICON ── -->
@@ -161,6 +176,24 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+      }
+
+      /* Skip to content — accessibility */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 12px;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 8px 16px;
+        font-size: 12px;
+        font-family: "JetBrains Mono", monospace;
+        text-decoration: none;
+        z-index: 9999;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 12px;
       }
 
       /* ── DARK (default) ── */
@@ -802,6 +835,59 @@
         letter-spacing: 0.08em;
       }
 
+      /* ── STACK GRID ── */
+      .stack-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: var(--border);
+        border: 1px solid var(--border);
+      }
+      .stack-group {
+        padding: 28px 30px;
+      }
+      .stack-group-title {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 14px;
+      }
+      .stack-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .stack-list li {
+        font-family: "Outfit", sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.75;
+        padding-left: 12px;
+        position: relative;
+      }
+      .stack-list li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--text-dim);
+        font-size: 11px;
+      }
+      .stack-list li strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      @media (max-width: 768px) {
+        .stack-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       /* ── ANIMATIONS ── */
       @keyframes riseIn {
         from {
@@ -853,6 +939,7 @@
             (c[a].q = c[a].q || []).push(arguments);
           };
         t = l.createElement(r);
+        t.defer = 1;
         t.async = 1;
         t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
         y = l.getElementsByTagName(r)[0];
@@ -862,6 +949,7 @@
   </head>
   <body>
     <!-- ── NAV ── -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav aria-label="Primary navigation">
       <div class="nav-left">
         <a
@@ -872,15 +960,17 @@
         >
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#stack">Stack</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#publish">Publish</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <button
+        type="button"
         class="theme-toggle"
         id="themeToggle"
-        aria-label="Toggle light/dark theme"
+        aria-label="Toggle light/dark theme, currently dark"
       >
         <!-- Sun: visible in dark mode -->
         <svg
@@ -919,310 +1009,519 @@
       </button>
     </nav>
 
-    <!-- ── HERO ── -->
-    <section id="hero" aria-label="Introduction">
-      <p class="hero-eyebrow">Freelance Machine Learning Engineer</p>
-      <h1 class="hero-name">Madu<br /><em>Chinemerem</em><br />Clarence</h1>
-      <div class="hero-role">
-        <span class="prompt" aria-hidden="true">~/</span>
-        <span>turning chaos into structure, one abstraction at a time</span>
-      </div>
-      <p class="hero-tagline">entropy → elegance.</p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-        <!-- ↓ Replace resume.pdf with your actual hosted PDF path or URL -->
-        <a
-          href="resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-resume"
-          >Résumé ↗</a
-        >
-      </div>
-    </section>
-
-    <!-- ── ABOUT ── -->
-    <section id="about" aria-labelledby="about-label">
-      <h2 class="label" id="about-label">About</h2>
-      <div class="about-grid">
-        <div class="about-block">
-          <p class="about-block-key">The Vibe</p>
-          <p>
-            Freelance ML Engineer. I work best alone — mostly taking chaotic
-            data and quietly making it make sense. No fluff, just structure.
-          </p>
+    <main id="main-content">
+      <!-- ── HERO ── -->
+      <section id="hero" aria-label="Introduction">
+        <p class="hero-eyebrow">Freelance Machine Learning Engineer</p>
+        <h1 class="hero-name">Madu<br /><em>Chinemerem</em><br />Clarence</h1>
+        <div class="hero-role">
+          <span class="prompt" aria-hidden="true">~/</span>
+          <span>turning chaos into structure, one abstraction at a time</span>
         </div>
-        <div class="about-block">
-          <p class="about-block-key">The Work</p>
-          <p>
-            I build models that actually learn and pipelines that don't fall
-            over. Ideas out of the notebook, into production, without the usual
-            headache.
-          </p>
+        <p class="hero-tagline">entropy → elegance.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          <!-- ↓ Replace resume.pdf with your actual hosted PDF path or URL -->
+          <a
+            href="resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-resume"
+            >Résumé ↗</a
+          >
         </div>
-        <div class="about-block">
-          <p class="about-block-key">The Focus</p>
-          <p>
-            Living somewhere between end-to-end ML infra, optimizing code until
-            it's stupid-fast, and dropping open-source side quests whenever I
-            feel like it.
-          </p>
+      </section>
+
+      <!-- ── ABOUT ── -->
+      <section id="about" aria-labelledby="about-label">
+        <h2 class="label" id="about-label">About</h2>
+        <div class="about-grid">
+          <div class="about-block">
+            <p class="about-block-key">The Vibe</p>
+            <p>
+              Freelance ML Engineer. I work best alone — mostly taking chaotic
+              data and quietly making it make sense. No fluff, just structure.
+            </p>
+          </div>
+          <div class="about-block">
+            <p class="about-block-key">The Work</p>
+            <p>
+              I build models that actually learn and pipelines that don't fall
+              over. Ideas out of the notebook, into production, without the
+              usual headache.
+            </p>
+          </div>
+          <div class="about-block">
+            <p class="about-block-key">The Focus</p>
+            <p>
+              Living somewhere between end-to-end ML infra, optimizing code
+              until it's stupid-fast, and dropping open-source side quests
+              whenever I feel like it.
+            </p>
+          </div>
+          <div class="about-block">
+            <p class="about-block-key">The Downtime</p>
+            <p>
+              Screen closed, outside with a juice, unplugged. Though it's still
+              pretty wild that we can teach math to do things.
+            </p>
+          </div>
         </div>
-        <div class="about-block">
-          <p class="about-block-key">The Downtime</p>
-          <p>
-            Screen closed, outside with a juice, unplugged. Though it's still
-            pretty wild that we can teach math to do things.
-          </p>
+      </section>
+
+      <!-- ── STACK & SKILLS ── -->
+      <section id="stack" aria-labelledby="stack-label">
+        <h2 class="label" id="stack-label">Stack &amp; Skills</h2>
+
+        <div class="stack-grid">
+          <!-- ── CORE LANGUAGES ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">Core Languages</h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Python</strong> — Build, train, and experiment with
+                machine learning models and data pipelines.
+              </li>
+              <li>
+                <strong>C++</strong> — Write high-performance, low-latency code
+                and interface directly with GPU hardware architectures.
+              </li>
+              <li>
+                <strong>Rust</strong> — Build memory-safe, ultra-fast data
+                processing tools and high-throughput backend services.
+              </li>
+              <li>
+                <strong>Scala / Java</strong> — Process massive distributed
+                datasets at scale using big data infrastructure.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── ML & DL FRAMEWORKS ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">
+              Machine Learning &amp; Deep Learning
+            </h3>
+            <ul class="stack-list">
+              <li>
+                <strong>PyTorch</strong> — Build, train, and manipulate the
+                mathematical tensors that make up deep learning models.
+              </li>
+              <li>
+                <strong>TensorFlow &amp; Keras</strong> — Design, prototype, and
+                train deep neural networks using scalable, production-ready
+                APIs.
+              </li>
+              <li>
+                <strong>Scikit-Learn</strong> — Build classic baseline models
+                for classification, regression, and clustering.
+              </li>
+              <li>
+                <strong>Hugging Face Transformers</strong> — Load, customize,
+                and fine-tune state-of-the-art open-source LLMs and vision
+                models.
+              </li>
+              <li>
+                <strong>LangChain</strong> — Orchestrate complex chains, agents,
+                and memory systems for LLM-powered applications.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── DATA INFRASTRUCTURE ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">
+              Data Infrastructure &amp; Management
+            </h3>
+            <ul class="stack-list">
+              <li>
+                <strong>PostgreSQL</strong> — Design relational databases, store
+                application data, and write complex queries for structured
+                datasets.
+              </li>
+              <li>
+                <strong>Docker</strong> — Package ML models with their exact
+                environments for reproducible deployment anywhere.
+              </li>
+              <li>
+                <strong>AWS</strong> — Rent powerful GPU clusters and manage
+                cloud-based machine learning infrastructure.
+              </li>
+              <li>
+                <strong>Ubuntu / Linux</strong> — Run production servers, manage
+                filesystems, and interface directly with hardware drivers.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── DEV & CI/CD ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">Development &amp; CI/CD Tools</h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Git &amp; GitHub</strong> — Manage codebase versions,
+                collaborate on large systems, and track code changes.
+              </li>
+              <li>
+                <strong>GitHub Actions</strong> — Automate testing, linting, and
+                continuous integration pipelines for ML code.
+              </li>
+              <li>
+                <strong>VSCode</strong> — Write, debug, and test code across
+                multiple programming languages.
+              </li>
+              <li>
+                <strong>Postman</strong> — Test API endpoints, verify model
+                inference response times, and debug data payloads.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── ML SPECIALIZATIONS ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">Machine Learning Specializations</h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Supervised &amp; Unsupervised Learning</strong> — Train
+                models on labeled data for predictions, or cluster unlabeled
+                data to find hidden patterns.
+              </li>
+              <li>
+                <strong>Retrieval-Augmented Generation (RAG)</strong> — Connect
+                LLMs to external databases for accurate, context-aware answers
+                without hallucinations.
+              </li>
+              <li>
+                <strong>Prompt Engineering</strong> — Design, optimize, and
+                evaluate precise text prompts to maximize LLM performance and
+                reliability.
+              </li>
+              <li>
+                <strong>ETL Processes</strong> — Build data pipelines that
+                Extract raw data, Transform it for training, and Load it into
+                data stores.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── MATHEMATICAL FOUNDATIONS ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">Mathematical Foundations</h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Linear Algebra &amp; Geometry</strong> — Format datasets
+                into multi-dimensional matrices and tensors for neural network
+                layers.
+              </li>
+              <li>
+                <strong>Calculus</strong> — Optimize model training using
+                gradients, partial derivatives, and backpropagation techniques.
+              </li>
+              <li>
+                <strong>Probability &amp; Statistics</strong> — Analyze data
+                distributions, validate model performance, and evaluate
+                significance tests.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── CORE ENGINEERING ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">Core Engineering &amp; Reasoning</h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Data Analysis &amp; Retrieval</strong> — Clean messy
+                datasets, extract relevant features, and query production
+                information stores.
+              </li>
+              <li>
+                <strong>Logical &amp; Algebraic Thinking</strong> — Design
+                efficient code logic and break down complex system requirements.
+              </li>
+              <li>
+                <strong>Critical Evaluation</strong> — Diagnose why a model is
+                failing, identify system bottlenecks, and audit data bias.
+              </li>
+              <li>
+                <strong>Continuous Learning &amp; Research</strong> — Read and
+                implement latest AI research papers into production systems.
+              </li>
+            </ul>
+          </div>
+
+          <!-- ── PROFESSIONAL SKILLS ── -->
+          <div class="stack-group about-block">
+            <h3 class="stack-group-title">
+              Professional &amp; Business Skills
+            </h3>
+            <ul class="stack-list">
+              <li>
+                <strong>Business Acumen</strong> — Align machine learning
+                engineering priorities with core product goals and company
+                revenue drivers.
+              </li>
+              <li>
+                <strong>Effective Communication</strong> — Explain complex
+                technical trade-offs to non-technical cross-functional
+                stakeholders.
+              </li>
+              <li>
+                <strong>Languages</strong> — English &amp; French — collaborate
+                across global, distributed engineering teams.
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ── PROJECTS ── -->
-    <section id="projects" aria-labelledby="projects-label">
-      <h2 class="label" id="projects-label">Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <p class="project-num">01</p>
-          <h3 class="project-name">Météo-Agri CI</h3>
-          <p class="project-desc">
-            Agricultural weather monitoring system for Côte d'Ivoire. Real-time
-            conditions, crop risk alerts, and regional forecasts — deployed and
-            live.
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Streamlit</span>
-            <span class="tag">AWS</span><span class="tag">CI/CD</span>
-          </div>
-          <a href="#" class="project-link">View project →</a>
-        </article>
+      <!-- ── PROJECTS ── -->
+      <section id="projects" aria-labelledby="projects-label">
+        <h2 class="label" id="projects-label">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <p class="project-num">01</p>
+            <h3 class="project-name">Météo-Agri CI</h3>
+            <p class="project-desc">
+              Agricultural weather monitoring system for Côte d'Ivoire.
+              Real-time conditions, crop risk alerts, and regional forecasts —
+              deployed and live.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Streamlit</span>
+              <span class="tag">AWS</span><span class="tag">CI/CD</span>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">02</p>
-          <h3 class="project-name">WaveShare</h3>
-          <p class="project-desc">
-            Open-source async P2P file transfer library. BLE peer discovery,
-            direct TCP streaming, SHA-256 integrity checks. Built for devs who'd
-            want it to exist.
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">BLE</span>
-            <span class="tag">TCP</span><span class="tag">Open Source</span>
-          </div>
-          <a href="#" class="project-link">View project →</a>
-        </article>
+          <article class="project-card">
+            <p class="project-num">02</p>
+            <h3 class="project-name">WaveShare</h3>
+            <p class="project-desc">
+              Open-source async P2P file transfer library. BLE peer discovery,
+              direct TCP streaming, SHA-256 integrity checks. Built for devs
+              who'd want it to exist.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">BLE</span>
+              <span class="tag">TCP</span><span class="tag">Open Source</span>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">03</p>
-          <h3 class="project-name">TPS + Payment Gateway</h3>
-          <p class="project-desc">
-            Distributed financial backend — async transaction processing with
-            JWT auth, polling-based gateway, and full message-queue integration.
-            AWS-ready.
-          </p>
-          <div class="tags">
-            <span class="tag">FastAPI</span><span class="tag">RabbitMQ</span>
-            <span class="tag">Redis</span><span class="tag">Docker</span>
-          </div>
-          <a href="#" class="project-link">View project →</a>
-        </article>
+          <article class="project-card">
+            <p class="project-num">03</p>
+            <h3 class="project-name">TPS + Payment Gateway</h3>
+            <p class="project-desc">
+              Distributed financial backend — async transaction processing with
+              JWT auth, polling-based gateway, and full message-queue
+              integration. AWS-ready.
+            </p>
+            <div class="tags">
+              <span class="tag">FastAPI</span><span class="tag">RabbitMQ</span>
+              <span class="tag">Redis</span><span class="tag">Docker</span>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">04</p>
-          <h3 class="project-name">Spotify Notifier</h3>
-          <p class="project-desc">
-            Headless release notification daemon. Tracks followed artists, fires
-            email alerts on new drops. No browser, no GUI — pure cron-scheduled
-            backend.
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">Spotipy</span>
-            <span class="tag">smtplib</span><span class="tag">Cron</span>
-          </div>
-          <a href="#" class="project-link">View project →</a>
-        </article>
-      </div>
-    </section>
+          <article class="project-card">
+            <p class="project-num">04</p>
+            <h3 class="project-name">Spotify Notifier</h3>
+            <p class="project-desc">
+              Headless release notification daemon. Tracks followed artists,
+              fires email alerts on new drops. No browser, no GUI — pure
+              cron-scheduled backend.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Spotipy</span>
+              <span class="tag">smtplib</span><span class="tag">Cron</span>
+            </div>
+            <a href="#" class="project-link">View project →</a>
+          </article>
+        </div>
+      </section>
 
-    <!-- ── PUBLISH ── -->
-    <section id="publish" aria-labelledby="publish-label">
-      <h2 class="label" id="publish-label">Publish</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <p class="project-num">01</p>
-          <h3 class="project-name">
-            Anomaly Detection in Agricultural Time-Series Using Lightweight
-            Transformer Encoders
-          </h3>
-          <p class="project-desc">
-            Explores efficient transformer-based methods for detecting anomalies
-            in sparse, noisy IoT sensor streams from agricultural deployments —
-            with a focus on low-latency inference in production. Replace with
-            your abstract.
-          </p>
-          <div class="tags">
-            <span class="tag">PyTorch</span><span class="tag">Time-Series</span>
-            <span class="tag">Transformers</span><span class="tag">IoT</span>
-          </div>
-          <!-- Replace # with your arXiv URL e.g. https://arxiv.org/abs/XXXX.XXXXX -->
-          <a href="#" class="project-link">View publish →</a>
-        </article>
+      <!-- ── PUBLISH ── -->
+      <section id="publish" aria-labelledby="publish-label">
+        <h2 class="label" id="publish-label">Publish</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <p class="project-num">01</p>
+            <h3 class="project-name">
+              Anomaly Detection in Agricultural Time-Series Using Lightweight
+              Transformer Encoders
+            </h3>
+            <p class="project-desc">
+              Explores efficient transformer-based methods for detecting
+              anomalies in sparse, noisy IoT sensor streams from agricultural
+              deployments — with a focus on low-latency inference in production.
+              Replace with your abstract.
+            </p>
+            <div class="tags">
+              <span class="tag">PyTorch</span
+              ><span class="tag">Time-Series</span>
+              <span class="tag">Transformers</span><span class="tag">IoT</span>
+            </div>
+            <!-- Replace # with your arXiv URL e.g. https://arxiv.org/abs/XXXX.XXXXX -->
+            <a href="#" class="project-link">View publish →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">02</p>
-          <h3 class="project-name">
-            BLE-Assisted Peer Discovery for Low-Latency P2P Data Transfer in
-            Constrained Environments
-          </h3>
-          <p class="project-desc">
-            Formalises a hybrid BLE-discovery + TCP-streaming protocol for
-            resource-constrained edge devices, with SHA-256 integrity
-            verification and benchmarks against existing P2P approaches. Replace
-            with your abstract.
-          </p>
-          <div class="tags">
-            <span class="tag">Networking</span><span class="tag">BLE</span>
-            <span class="tag">Rust</span><span class="tag">Edge Computing</span>
-          </div>
-          <a href="#" class="project-link">View publish →</a>
-        </article>
+          <article class="project-card">
+            <p class="project-num">02</p>
+            <h3 class="project-name">
+              BLE-Assisted Peer Discovery for Low-Latency P2P Data Transfer in
+              Constrained Environments
+            </h3>
+            <p class="project-desc">
+              Formalises a hybrid BLE-discovery + TCP-streaming protocol for
+              resource-constrained edge devices, with SHA-256 integrity
+              verification and benchmarks against existing P2P approaches.
+              Replace with your abstract.
+            </p>
+            <div class="tags">
+              <span class="tag">Networking</span><span class="tag">BLE</span>
+              <span class="tag">Rust</span
+              ><span class="tag">Edge Computing</span>
+            </div>
+            <a href="#" class="project-link">View publish →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">03</p>
-          <h3 class="project-name">
-            On Building ML Pipelines That Don't Embarrass You at 3am
-          </h3>
-          <p class="project-desc">
-            A field guide to production-grade ML infra — what actually breaks,
-            why it breaks quietly, and the structural patterns that prevent 3am
-            incidents. Replace with your intro paragraph.
-          </p>
-          <div class="tags">
-            <span class="tag">MLOps</span><span class="tag">Python</span>
-            <span class="tag">Production</span
-            ><span class="tag">Infrastructure</span>
-          </div>
-          <a href="#" class="project-link">View publish →</a>
-        </article>
+          <article class="project-card">
+            <p class="project-num">03</p>
+            <h3 class="project-name">
+              On Building ML Pipelines That Don't Embarrass You at 3am
+            </h3>
+            <p class="project-desc">
+              A field guide to production-grade ML infra — what actually breaks,
+              why it breaks quietly, and the structural patterns that prevent
+              3am incidents. Replace with your intro paragraph.
+            </p>
+            <div class="tags">
+              <span class="tag">MLOps</span><span class="tag">Python</span>
+              <span class="tag">Production</span
+              ><span class="tag">Infrastructure</span>
+            </div>
+            <a href="#" class="project-link">View publish →</a>
+          </article>
 
-        <article class="project-card">
-          <p class="project-num">04</p>
-          <h3 class="project-name">
-            The Case for Going Fully Headless in Backend ML Systems
-          </h3>
-          <p class="project-desc">
-            Why stripping browser dependencies, GUIs, and interactive runtimes
-            from ML backends leads to leaner deployments, reproducible
-            cron-based workflows, and fewer moving parts to debug. Replace with
-            your intro paragraph.
-          </p>
-          <div class="tags">
-            <span class="tag">Architecture</span><span class="tag">Python</span>
-            <span class="tag">Backend</span
-            ><span class="tag">Systems Design</span>
-          </div>
-          <a href="#" class="project-link">View publish →</a>
-        </article>
-      </div>
-    </section>
+          <article class="project-card">
+            <p class="project-num">04</p>
+            <h3 class="project-name">
+              The Case for Going Fully Headless in Backend ML Systems
+            </h3>
+            <p class="project-desc">
+              Why stripping browser dependencies, GUIs, and interactive runtimes
+              from ML backends leads to leaner deployments, reproducible
+              cron-based workflows, and fewer moving parts to debug. Replace
+              with your intro paragraph.
+            </p>
+            <div class="tags">
+              <span class="tag">Architecture</span
+              ><span class="tag">Python</span> <span class="tag">Backend</span
+              ><span class="tag">Systems Design</span>
+            </div>
+            <a href="#" class="project-link">View publish →</a>
+          </article>
+        </div>
+      </section>
 
-    <!-- ── CONTACT ── -->
-    <section id="contact" aria-labelledby="contact-label">
-      <h2 class="label" id="contact-label">Contact</h2>
-      <p class="contact-intro">
-        Have something worth building?<br />Let's talk.
-      </p>
-      <div class="contact-list">
-        <a href="mailto:Chinemerem.Madu@proton.me" class="contact-item">
-          <span class="contact-key">Email</span>
-          <span class="contact-val">Chinemerem.Madu@proton.me</span>
-        </a>
+      <!-- ── CONTACT ── -->
+      <section id="contact" aria-labelledby="contact-label">
+        <h2 class="label" id="contact-label">Contact</h2>
+        <p class="contact-intro">
+          Have something worth building?<br />Let's talk.
+        </p>
+        <div class="contact-list">
+          <a href="mailto:Chinemerem.Madu@proton.me" class="contact-item">
+            <span class="contact-key">Email</span>
+            <span class="contact-val">Chinemerem.Madu@proton.me</span>
+          </a>
 
-        <a
-          href="https://github.com/Clarence6174"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">GitHub</span>
-          <span class="contact-val">github.com/Clarence6174</span>
-        </a>
+          <a
+            href="https://github.com/Clarence6174"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">GitHub</span>
+            <span class="contact-val">github.com/Clarence6174</span>
+          </a>
 
-        <a
-          href="https://www.linkedin.com/in/chinemerem-madu-8875a93b0"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">LinkedIn</span>
-          <span class="contact-val">chinemerem-madu-8875a93b0</span>
-        </a>
+          <a
+            href="https://www.linkedin.com/in/chinemerem-madu-8875a93b0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">LinkedIn</span>
+            <span class="contact-val">chinemerem-madu-8875a93b0</span>
+          </a>
 
-        <a
-          href="https://twitter.com/It_is_clarence"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">Twitter</span>
-          <span class="contact-val">@It_is_clarence</span>
-        </a>
+          <a
+            href="https://twitter.com/It_is_clarence"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">Twitter</span>
+            <span class="contact-val">@It_is_clarence</span>
+          </a>
 
-        <a
-          href="https://medium.com/@chinemeremmadu"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">Medium</span>
-          <span class="contact-val">@chinemeremmadu</span>
-        </a>
+          <a
+            href="https://medium.com/@chinemeremmadu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">Medium</span>
+            <span class="contact-val">@chinemeremmadu</span>
+          </a>
 
-        <a
-          href="https://huggingface.co/ChinemeremMadu"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">HuggingFace</span>
-          <span class="contact-val">ChinemeremMadu</span>
-        </a>
+          <a
+            href="https://huggingface.co/ChinemeremMadu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">HuggingFace</span>
+            <span class="contact-val">ChinemeremMadu</span>
+          </a>
 
-        <a
-          href="https://t.me/madu_clarence"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">Telegram</span>
-          <span class="contact-val">@madu_clarence</span>
-        </a>
+          <a
+            href="https://t.me/madu_clarence"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">Telegram</span>
+            <span class="contact-val">@madu_clarence</span>
+          </a>
 
-        <!-- ORCID — keep rel="me" for identity verification -->
-        <a
-          id="cy-effective-orcid-url"
-          href="https://orcid.org/0009-0009-6911-2442"
-          target="_blank"
-          rel="me noopener noreferrer"
-          class="contact-item"
-        >
-          <span class="contact-key">ORCID</span>
-          <span class="contact-val">0009-0009-6911-2442</span>
-        </a>
+          <!-- ORCID — keep rel="me" for identity verification -->
+          <a
+            id="cy-effective-orcid-url"
+            href="https://orcid.org/0009-0009-6911-2442"
+            target="_blank"
+            rel="me noopener noreferrer"
+            class="contact-item"
+          >
+            <span class="contact-key">ORCID</span>
+            <span class="contact-val">0009-0009-6911-2442</span>
+          </a>
 
-        <!-- ↓ Replace resume.pdf with your actual hosted PDF path or URL (e.g. Google Drive, Dropbox, or same repo) -->
-        <a
-          href="resume.pdf"
-          target="_blank"
-          rel="noopener"
-          class="contact-item resume-row"
-        >
-          <span class="contact-key">Résumé</span>
-          <span class="contact-val">Download PDF ↗</span>
-        </a>
-      </div>
-    </section>
+          <!-- ↓ Replace resume.pdf with your actual hosted PDF path or URL (e.g. Google Drive, Dropbox, or same repo) -->
+          <a
+            href="resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="contact-item resume-row"
+          >
+            <span class="contact-key">Résumé</span>
+            <span class="contact-val">Download PDF ↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
 
     <!-- ── FOOTER ── -->
     <footer>
@@ -1268,5 +1567,16 @@
         .querySelectorAll(".about-block, .project-card, .contact-item")
         .forEach((el) => observer.observe(el));
     </script>
+
+    <noscript>
+      <style>
+        .about-block,
+        .project-card,
+        .contact-item {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </body>
 </html>
