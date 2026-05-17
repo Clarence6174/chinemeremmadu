@@ -130,6 +130,148 @@
     </script>
 
     <!-- ── FONTS ── -->
+
+    <!-- Critical CSS inlined for instant first paint -->
+    <style id="critical">
+      :root {
+        --bg: #080808;
+        --text: #e8e8e8;
+        --text-mid: #ababab;
+        --text-dim: #909090;
+        --accent: #22d3ee;
+        --accent-warm: #f59e0b;
+        --border: #181818;
+        --border-hi: #252525;
+      }
+      html[data-theme="light"] {
+        --bg: #f5f4f0;
+        --text: #111111;
+        --text-mid: #282828;
+        --text-dim: #595959;
+        --accent: #0891b2;
+        --accent-warm: #d97706;
+        --border: #dddad4;
+        --border-hi: #ccc8c2;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        font-size: 15px;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 52px;
+        background: rgba(8, 8, 8, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      html[data-theme="light"] nav {
+        background: rgba(245, 244, 240, 0.9);
+      }
+      .nav-logo {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: 0.06em;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        text-decoration: none;
+      }
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 88px;
+        position: relative;
+        z-index: 1;
+        max-width: 1020px;
+        margin: 0 auto;
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      .hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 22px;
+      }
+      .hero-name {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(54px, 8.5vw, 100px);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--text);
+        margin-bottom: 28px;
+      }
+      .hero-name em {
+        font-style: italic;
+        color: var(--text-mid);
+      }
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 12px;
+        background: var(--accent);
+        color: var(--bg);
+        padding: 8px 16px;
+        font-size: 12px;
+        text-decoration: none;
+        z-index: 9999;
+      }
+      .skip-link:focus {
+        top: 12px;
+      }
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
+        #hero {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+        .hero-name {
+          font-size: 46px;
+        }
+      }
+    </style>
     <!-- Performance: preconnect + dns-prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -139,6 +281,21 @@
     <link rel="dns-prefetch" href="https://github.com" />
     <link rel="dns-prefetch" href="https://huggingface.co" />
     <link rel="dns-prefetch" href="https://medium.com" />
+    <!-- Preload hero font file for faster LCP -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href="https://fonts.gstatic.com/s/cormorantgaramond/v22/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllvuQ.woff2"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+      href="https://fonts.gstatic.com/s/outfit/v11/QGYyz_MVcBeNP4NjuGObqx1XmO1I4TC1C4G-EiAou6Y.woff2"
+    />
     <!-- Async font loading — non-blocking -->
     <link
       rel="stylesheet"
@@ -1045,21 +1202,26 @@
         }
       }
     </style>
-    <!-- ── MICROSOFT CLARITY (analytics + heatmaps) ── -->
+    <!-- ── MICROSOFT CLARITY — loaded after page interactive ── -->
     <script>
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.defer = 1;
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "wrxugpo6mv");
+      window.addEventListener(
+        "load",
+        function () {
+          (function (c, l, a, r, i, t, y) {
+            c[a] =
+              c[a] ||
+              function () {
+                (c[a].q = c[a].q || []).push(arguments);
+              };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+          })(window, document, "clarity", "script", "wrxugpo6mv");
+        },
+        { once: true, passive: true },
+      );
     </script>
   </head>
   <body itemscope itemtype="https://schema.org/WebPage">
@@ -1135,7 +1297,12 @@
 
     <main id="main-content">
       <!-- ── HERO ── -->
-      <section id="hero" aria-label="Introduction">
+      <section
+        id="hero"
+        aria-label="Introduction"
+        itemscope
+        itemtype="https://schema.org/WPHeader"
+      >
         <p class="hero-eyebrow">
           Freelance Machine Learning Engineer —
           <span itemprop="name">Chinemerem Madu</span>
@@ -1706,47 +1873,98 @@
     </footer>
 
     <script>
-      /* ── JS CLASS — gates CSS animations ── */
+      // ── 1. JS CLASS — gates CSS animations, runs sync before paint ──────────────
       document.documentElement.classList.add("js");
 
-      /* ── THEME TOGGLE (persists across sessions) ── */
-      const root = document.documentElement;
-      const toggle = document.getElementById("themeToggle");
-      const saved = localStorage.getItem("mc-theme") || "dark";
-      root.setAttribute("data-theme", saved);
+      // ── 2. THEME — read localStorage before first paint to avoid flash ───────────
+      (function () {
+        var saved = localStorage.getItem("mc-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", saved);
+      })();
 
-      toggle.addEventListener("click", () => {
-        const next =
-          root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        root.setAttribute("data-theme", next);
-        localStorage.setItem("mc-theme", next);
-      });
-
-      /* ── SCROLL REVEAL WITH STAGGER ── */
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const group = el.parentElement.querySelectorAll(
-              ".about-block, .stack-group, .project-card, .contact-item",
-            );
-            let delay = 0;
-            group.forEach((sib, i) => {
-              if (sib === el) delay = i * 90;
-            });
-            setTimeout(() => el.classList.add("visible"), delay);
-            observer.unobserve(el);
-          });
+      // ── 3. THEME TOGGLE — batched read/write, no reflow ─────────────────────────
+      document.getElementById("themeToggle").addEventListener(
+        "click",
+        function () {
+          var current = document.documentElement.getAttribute("data-theme");
+          var next = current === "dark" ? "light" : "dark";
+          // Single write — no read-then-write cycle
+          document.documentElement.setAttribute("data-theme", next);
+          localStorage.setItem("mc-theme", next);
+          // Update aria-label without triggering reflow
+          this.setAttribute(
+            "aria-label",
+            "Toggle " + next + " theme, currently " + next,
+          );
         },
-        { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
+        { passive: true },
       );
 
-      document
-        .querySelectorAll(
-          ".about-block, .stack-group, .project-card, .contact-item",
-        )
-        .forEach((el) => observer.observe(el));
+      // ── 4. SCROLL REVEAL — pre-cache stagger delays, use rAF for batched writes ──
+      (function () {
+        if (!("IntersectionObserver" in window)) {
+          // Fallback: show all elements immediately if IO not supported
+          document
+            .querySelectorAll(
+              ".about-block,.stack-group,.project-card,.contact-item",
+            )
+            .forEach(function (el) {
+              el.classList.add("visible");
+            });
+          return;
+        }
+
+        // Pre-cache delays with a single DOM read pass BEFORE observing
+        // This avoids repeated querySelectorAll inside the callback (force reflow)
+        var delayMap = new Map();
+        var selector = ".about-block,.stack-group,.project-card,.contact-item";
+
+        document.querySelectorAll(selector).forEach(function (el) {
+          var siblings = Array.from(
+            el.parentElement.querySelectorAll(selector),
+          );
+          var idx = siblings.indexOf(el);
+          delayMap.set(el, idx * 90);
+        });
+
+        // Pending writes batched per rAF frame
+        var pending = [];
+        var rafScheduled = false;
+
+        function flushPending() {
+          // All writes in one rAF — zero forced reflows
+          pending.forEach(function (item) {
+            item.el.classList.add("visible");
+          });
+          pending = [];
+          rafScheduled = false;
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              var el = entry.target;
+              var delay = delayMap.get(el) || 0;
+              observer.unobserve(el);
+
+              // Schedule write — no DOM reads inside callback
+              setTimeout(function () {
+                pending.push({ el: el });
+                if (!rafScheduled) {
+                  rafScheduled = true;
+                  requestAnimationFrame(flushPending);
+                }
+              }, delay);
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
+        );
+
+        document.querySelectorAll(selector).forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
     </script>
 
     <noscript>
