@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ── PRIMARY SEO ── -->
+    <!-- ── TITLE ── -->
     <title>Chinemerem Madu — Machine Learning Engineer</title>
+
+    <!-- ── PRIMARY SEO ── -->
     <meta
       name="description"
       content="Chinemerem Madu | ML Engineer. I build models that learn and pipelines that don't fall over. Specialized in deep learning. Open to freelance &amp; open-source."
@@ -74,7 +76,7 @@
       content="Chinemerem Madu — Freelance ML Engineer portfolio"
     />
 
-    <!-- ── JSON-LD ── -->
+    <!-- ── JSON-LD STRUCTURED DATA ── -->
     <script type="application/ld+json">
       [
         {
@@ -123,575 +125,793 @@
       ]
     </script>
 
-    <!-- ── VERIFICATION ── -->
+    <!-- ── SEARCH CONSOLE ── -->
     <meta
       name="google-site-verification"
       content="XOJqDyBX9UFAQw4oq5O9BoTKcjI_wvlG_3lU-6yihus"
     />
+    <!-- Bing: verify via Microsoft Clarity → Settings → Integrations → Bing Webmaster Tools -->
 
     <!-- ── PERFORMANCE ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.clarity.ms" />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
     <link rel="dns-prefetch" href="https://github.com" />
     <link rel="dns-prefetch" href="https://huggingface.co" />
     <link rel="dns-prefetch" href="https://medium.com" />
-    <link rel="dns-prefetch" href="https://orcid.org" />
 
-    <!-- Async font loading — non-blocking -->
+    <!-- Async font load — non-blocking -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
       media="print"
       onload="this.media = 'all'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
       />
     </noscript>
 
-    <!-- ── FAVICON ── -->
-    <link rel="icon" type="image/png" href="clarence_icon.png" />
+    <!-- ── FAVICON PACKAGE ── -->
+    <link rel="icon" type="image/png" sizes="32x32" href="clarence_icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="clarence_icon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="clarence_icon.png" />
-    <meta name="theme-color" content="#111010" />
+    <link rel="shortcut icon" type="image/png" href="clarence_icon.png" />
+    <meta name="theme-color" content="#1a1917" />
     <meta
       name="theme-color"
       content="#faf9f7"
       media="(prefers-color-scheme: light)"
     />
+    <meta name="msapplication-TileColor" content="#1a1917" />
+    <meta name="msapplication-TileImage" content="clarence_icon.png" />
 
-    <style id="critical-theme">
-      html[data-theme="dark"],
-      html:not([data-theme]) {
-        --bg: #111010;
-        --text: #f2f0ed;
-        --text-mid: #a09d99;
-        --accent: #22d3ee;
+    <!-- ── CRITICAL: theme before first paint (prevents flash) ── -->
+    <script>
+      (function () {
+        var saved = localStorage.getItem("mc-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", saved);
+      })();
+    </script>
+
+    <style>
+      /* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
+
+      /* ─────────────────────────────────────────
+       TOKENS — DARK
+    ───────────────────────────────────────── */
+      :root,
+      html[data-theme="dark"] {
+        --bg: #1a1917;
+        --bg-nav: rgba(26, 25, 23, 0.92);
+        --text: #f0ede9;
+        --text-mid: #a09c97;
+        --text-dim: #5e5a56;
+        --border: #2a2826;
+        --border-hi: #363330;
+      }
+
+      /* ─────────────────────────────────────────
+       TOKENS — LIGHT
+    ───────────────────────────────────────── */
       html[data-theme="light"] {
         --bg: #faf9f7;
+        --bg-nav: rgba(250, 249, 247, 0.93);
         --text: #1a1816;
         --text-mid: #4a4744;
-        --accent: #0891b2;
+        --text-dim: #9a9591;
+        --border: #e0dbd6;
+        --border-hi: #ccc8c3;
       }
+
+      /* ─────────────────────────────────────────
+       BASE
+    ───────────────────────────────────────── */
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         background: var(--bg);
         color: var(--text);
         font-family:
+          "Plus Jakarta Sans",
+          Arial,
           system-ui,
           -apple-system,
           sans-serif;
-      }
-    </style>
-    <style>
-      /* ─────────────────────────────────────────────
-         RESET
-      ───────────────────────────────────────────── */
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-      /* ─────────────────────────────────────────────
-         TOKENS — DARK (default)
-      ───────────────────────────────────────────── */
-      :root,
-      html[data-theme="dark"] {
-        --bg:           #111010;
-        --bg-card:      #181716;
-        --bg-nav:       rgba(17,16,16,0.9);
-        --text:         #f2f0ed;
-        --text-mid:     #a09d99;
-        --text-dim:     #5c5955;
-        --accent:       #22d3ee;
-        --accent-warm:  #f59e0b;
-        --border:       #252220;
-        --border-hi:    #302d2a;
-        --glow:         rgba(34,211,238,0.05);
-        --card-hover:   #1e1c1a;
-      }
-
-      /* ─────────────────────────────────────────────
-         TOKENS — LIGHT
-      ───────────────────────────────────────────── */
-      html[data-theme="light"] {
-        --bg:           #faf9f7;
-        --bg-card:      #f2f0ec;
-        --bg-nav:       rgba(250,249,247,0.92);
-        --text:         #1a1816;
-        --text-mid:     #4a4744;
-        --text-dim:     #a09d99;
-        --accent:       #0891b2;
-        --accent-warm:  #d97706;
-        --border:       #e2deda;
-        --border-hi:    #cdc9c4;
-        --glow:         rgba(8,145,178,0.06);
-        --card-hover:   #ede9e4;
-      }
-
-      /* ─────────────────────────────────────────────
-         BASE
-      ───────────────────────────────────────────── */
-      html { scroll-behavior: smooth; }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: 'Plus Jakarta Sans', Arial, system-ui, -apple-system, sans-serif;
         font-size: 16px;
         line-height: 1.85;
         letter-spacing: 0.01em;
-        word-spacing: 0.04em;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
-        transition: background 0.3s ease, color 0.3s ease;
-        transition: background 0.3s ease, color 0.3s ease;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
       }
 
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-hi);
+        border-radius: 2px;
+      }
 
+      /* Selection */
+      ::selection {
+        background: var(--text);
+        color: var(--bg);
+      }
 
-      /* ─────────────────────────────────────────────
-         SKIP LINK
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       SKIP LINK
+    ───────────────────────────────────────── */
       .skip-link {
-        position: absolute; top: -100%; left: 12px;
-        background: var(--accent); color: var(--bg);
-        padding: 8px 16px; font-size: 12px;
-        font-family: 'JetBrains Mono', monospace;
-        text-decoration: none; z-index: 9999;
+        position: absolute;
+        top: -100%;
+        left: 12px;
+        background: var(--text);
+        color: var(--bg);
+        padding: 8px 16px;
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        text-decoration: none;
+        z-index: 9999;
       }
-      .skip-link:focus { top: 12px; }
+      .skip-link:focus {
+        top: 12px;
+      }
 
-      /* ─────────────────────────────────────────────
-         NAV
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
       nav {
-        position: fixed; top: 0; left: 0; right: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 200;
-        display: flex; align-items: center;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
         padding: 0 52px;
-        height: 60px;
+        height: 56px;
         background: var(--bg-nav);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-        transition: background 0.3s ease, border-color 0.3s ease;
+        border-bottom: 1px solid transparent;
+        transition:
+          border-color 0.3s ease,
+          background 0.3s ease;
+      }
+      nav.scrolled {
+        border-bottom-color: var(--border);
       }
 
-      .nav-left { display: flex; align-items: center; gap: 40px; }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
 
       .nav-logo {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px; font-weight: 500;
-        color: var(--text); text-decoration: none;
-        letter-spacing: 0.04em;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: 0.06em;
       }
-      .nav-logo span { color: var(--accent); }
+      .nav-logo .dot {
+        color: var(--text-mid);
+      }
 
-      .nav-links { display: flex; gap: 36px; list-style: none; }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
       .nav-links a {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; font-weight: 400;
-        letter-spacing: 0.16em; text-transform: uppercase;
-        color: var(--text-dim); text-decoration: none;
-        position: relative;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        text-decoration: none;
+        transition: color 0.15s;
       }
-      .nav-links a::after {
-        content: '';
-        position: absolute; bottom: -3px; left: 0;
-        width: 0; height: 1px;
-        background: var(--accent);
-        transition: width 0.2s ease;
+      .nav-links a:hover {
+        color: var(--text);
       }
-      .nav-links a:hover { color: var(--text); transition: color 0.15s; }
-      .nav-links a:hover::after { width: 100%; }
 
       /* Theme toggle */
       .theme-toggle {
         background: none;
         border: 1px solid var(--border-hi);
-        color: var(--text-dim); cursor: pointer;
-        padding: 7px 10px; display: flex;
-        align-items: center; justify-content: center;
-        border-radius: 6px;
-        transition: border-color 0.15s, color 0.15s;
+        color: var(--text-dim);
+        cursor: pointer;
+        padding: 5px 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
       }
-      .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-      .icon-sun, .icon-moon { width: 14px; height: 14px; display: none; }
-      html[data-theme="dark"]  .icon-sun  { display: block; }
-      html[data-theme="light"] .icon-moon { display: block; }
+      .theme-toggle:hover {
+        border-color: var(--text-mid);
+        color: var(--text);
+      }
+      .icon-sun,
+      .icon-moon {
+        display: none;
+        width: 13px;
+        height: 13px;
+      }
+      html[data-theme="dark"] .icon-sun {
+        display: block;
+      }
+      html[data-theme="light"] .icon-moon {
+        display: block;
+      }
 
-      /* ─────────────────────────────────────────────
-         SECTIONS
-      ───────────────────────────────────────────── */
-      section {
-        position: relative; z-index: 1;
-        max-width: 1040px; margin: 0 auto;
-        padding: 120px 52px;
-        scroll-margin-top: 60px;
+      /* ─────────────────────────────────────────
+       SECTION WRAPPER
+    ───────────────────────────────────────── */
+      .section {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 100px 52px;
+        scroll-margin-top: 56px;
       }
 
       /* Section label */
-      .label {
-        display: inline-flex; align-items: center; gap: 12px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; font-weight: 500;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--accent); margin-bottom: 48px;
+      .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 52px;
       }
-      .label::after {
-        content: '';
-        display: block; width: 36px; height: 1px;
-        background: var(--accent); opacity: 0.4;
+      .section-label::after {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: var(--border-hi);
       }
 
-      /* ─────────────────────────────────────────────
-         HERO
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       BUTTONS — rounded pill
+    ───────────────────────────────────────── */
+      .btn {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 8px 18px;
+        border: 1px solid;
+        border-radius: 20px;
+        display: inline-block;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          color 0.18s,
+          border-color 0.18s;
+      }
+      .btn-primary {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+      }
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--text);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-mid);
+        border-color: var(--border-hi);
+      }
+      .btn-ghost:hover {
+        color: var(--text);
+        border-color: var(--text-mid);
+      }
+
+      /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
       #hero {
         min-height: 100vh;
-        display: flex; flex-direction: column;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        padding-top: 60px;
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 80px 52px 100px;
+        scroll-margin-top: 56px;
       }
 
       .hero-eyebrow {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; font-weight: 400;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        color: var(--text-dim); margin-bottom: 24px;
-
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 28px;
       }
 
       .hero-name {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: clamp(56px, 9vw, 108px);
-        font-weight: 400; line-height: 1.0;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: clamp(36px, 5.5vw, 64px);
+        font-weight: 700;
+        line-height: 1.08;
         letter-spacing: -0.02em;
-        color: var(--text); margin-bottom: 28px;
-
+        color: var(--text);
+        margin-bottom: 18px;
       }
-      .hero-name em { font-style: italic; color: var(--text-mid); }
 
-      .hero-role {
-        display: flex; align-items: center; gap: 8px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 13px; font-weight: 400;
-        color: var(--text-mid); margin-bottom: 20px;
-
+      .hero-specialization {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-dim);
+        margin-bottom: 16px;
+        letter-spacing: 0.04em;
       }
-      .hero-role .prompt { color: var(--accent); }
 
       .hero-subtitle {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-dim); letter-spacing: 0.02em;
-        margin-bottom: 16px;
-
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--text-dim);
+        letter-spacing: 0.01em;
+        max-width: 480px;
+        line-height: 1.85;
+        margin-bottom: 12px;
       }
 
-      .hero-tagline {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-style: italic; font-size: 22px; font-weight: 400;
-        color: var(--text-dim); letter-spacing: 0.02em;
-        margin-bottom: 52px;
-
+      .hero-availability {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-dim);
+        margin-bottom: 44px;
+        letter-spacing: 0.01em;
       }
 
       .hero-ctas {
-        display: flex; gap: 14px; flex-wrap: wrap;
-
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
       }
 
-      /* Buttons */
-      .btn {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px; font-weight: 500;
-        letter-spacing: 0.14em; text-transform: uppercase;
-        text-decoration: none; padding: 12px 24px;
-        border: 1px solid; border-radius: 6px;
-        transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
-        cursor: pointer; display: inline-block;
+      /* ─────────────────────────────────────────
+       ABOUT — CV rows
+    ───────────────────────────────────────── */
+      .about-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 0 24px;
+        align-items: start;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--border);
       }
 
-      .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-      .btn-primary:hover { background: transparent; color: var(--accent); }
-      .btn-ghost { background: transparent; color: var(--text-mid); border-color: var(--border-hi); }
-      .btn-ghost:hover { border-color: var(--text-mid); color: var(--text); }
-      .btn-resume { background: transparent; color: var(--accent-warm); border-color: var(--accent-warm); }
-      .btn-resume:hover { background: var(--accent-warm); color: var(--bg); }
-
-      /* ─────────────────────────────────────────────
-         ABOUT
-      ───────────────────────────────────────────── */
-      .about-grid {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 2px; background: var(--border);
-        border: 1px solid var(--border);
+      .row-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        padding-top: 4px;
       }
 
-      .about-block {
-        background: var(--bg); padding: 32px 28px;
-      }
-      .about-block:hover { background: var(--card-hover); }
-
-      .about-block-key {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; font-weight: 500;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--accent); margin-bottom: 10px;
-      }
-      .about-block p {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 15px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.9;
-        letter-spacing: 0.01em; word-spacing: 0.04em;
+      .row-text {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.85;
+        letter-spacing: 0.01em;
       }
 
-      /* Section CTA */
+      /* Section CTA link */
+      .cta-link {
+        color: var(--text-mid);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border-hi);
+        padding-bottom: 1px;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .cta-link:hover {
+        border-bottom-color: var(--text-mid);
+        color: var(--text);
+      }
+
       .section-cta {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-dim); margin-top: 28px; line-height: 1.7;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-dim);
+        margin-top: 28px;
+        line-height: 1.7;
       }
-      .inline-link {
-        color: var(--accent); text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.2s;
-      }
-      .inline-link:hover { border-bottom-color: var(--accent); }
 
-      /* ─────────────────────────────────────────────
-         STACK
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       STACK — 2-col grid, flat list
+    ───────────────────────────────────────── */
       .stack-grid {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 2px; background: var(--border);
-        border: 1px solid var(--border);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px 64px;
       }
-
-      .stack-group {
-        background: var(--bg); padding: 28px 28px;
-      }
-      .stack-group:hover { background: var(--card-hover); }
 
       .stack-group-title {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; font-weight: 500;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: var(--accent); margin-bottom: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 18px;
       }
-      .stack-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+      .stack-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
       .stack-list li {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 15px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.85;
-        padding-left: 14px; position: relative;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.75;
+        padding-left: 16px;
+        position: relative;
         letter-spacing: 0.01em;
       }
       .stack-list li::before {
-        content: '—'; position: absolute; left: 0;
-        color: var(--text-dim); font-size: 11px;
-        font-family: 'JetBrains Mono', monospace;
+        content: "—";
+        position: absolute;
+        left: 0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        color: var(--border-hi);
+        top: 5px;
       }
-      .stack-list li strong { color: var(--text); font-weight: 600; }
 
-      /* ─────────────────────────────────────────────
-         PROJECTS & PUBLISH — shared card grid
-      ───────────────────────────────────────────── */
-
-      /* Technical abstract meta rows */
-      .abstract-grid {
+      /* ─────────────────────────────────────────
+       PROJECTS — numbered rows, spec sheet
+    ───────────────────────────────────────── */
+      .project-row {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 20px;
+        grid-template-columns: 48px 1fr;
+        gap: 0 32px;
+        padding: 44px 0;
+        border-bottom: 1px solid var(--border);
       }
-      .abstract-field { display: flex; flex-direction: column; gap: 4px; }
-      .abstract-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; font-weight: 500;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: var(--text-dim);
-      }
-      .abstract-value {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 14px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.75;
-        letter-spacing: 0.01em;
-      }
-      .abstract-value strong { color: var(--text); font-weight: 600; }
-
-      /* Metric pills */
-      .metrics-row {
-        display: flex; flex-wrap: wrap; gap: 8px;
-        margin-bottom: 20px;
-      }
-      .metric-pill {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; font-weight: 500;
-        padding: 4px 10px;
-        background: rgba(34,211,238,0.08);
-        border: 1px solid rgba(34,211,238,0.25);
-        color: var(--accent);
-        border-radius: 4px;
-        letter-spacing: 0.06em;
-      }
-      html[data-theme="light"] .metric-pill {
-        background: rgba(8,145,178,0.08);
-        border-color: rgba(8,145,178,0.3);
-        color: var(--accent);
-      }
-      .cards-grid {
-        display: grid; grid-template-columns: 1fr 1fr;
-        gap: 2px; background: var(--border);
-        border: 1px solid var(--border);
-      }
-
-      .project-card {
-        background: var(--bg); padding: 36px 32px;
-        position: relative; overflow: hidden;
-        border-left: 3px solid transparent;
-      }
-      .project-card:hover { background: var(--card-hover); border-left-color: var(--accent); transition: border-left-color 0.15s, background 0.15s; }
 
       .project-num {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; color: var(--text-dim);
-        letter-spacing: 0.12em; margin-bottom: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--text-dim);
+        letter-spacing: 0.1em;
+        padding-top: 4px;
       }
+
       .project-name {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 20px; font-weight: 700;
-        color: var(--text); margin-bottom: 10px; line-height: 1.25;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 10px;
         letter-spacing: -0.01em;
+        line-height: 1.2;
       }
+
       .project-desc {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 15px; font-weight: 400;
-        color: var(--text-mid); line-height: 1.9; margin-bottom: 20px;
-        letter-spacing: 0.01em; word-spacing: 0.04em;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.85;
+        margin-bottom: 28px;
+        max-width: 640px;
+        letter-spacing: 0.01em;
       }
-      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+
+      /* Spec sheet field row */
+      .spec-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0 20px;
+        margin-bottom: 10px;
+        align-items: start;
+      }
+
+      .spec-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        padding-top: 3px;
+      }
+
+      .spec-value {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.75;
+        letter-spacing: 0.01em;
+      }
+
+      /* Metrics row */
+      .metrics-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .metric-pill {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        color: var(--text-dim);
+        border: 1px solid var(--border-hi);
+        padding: 3px 9px;
+        border-radius: 4px;
+        letter-spacing: 0.04em;
+      }
+
+      /* Tags + link row */
+      .project-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
       .tag {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--text-dim); border: 1px solid var(--border-hi);
-        padding: 3px 8px; border-radius: 4px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        border: 1px solid var(--border);
+        padding: 2px 7px;
+        border-radius: 4px;
       }
-      .project-card:hover .tag { color: var(--text-mid); border-color: var(--border-hi); }
 
       .project-link {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--accent); text-decoration: none;
-        display: inline-flex; align-items: center; gap: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-mid);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: auto;
+        transition: color 0.15s;
       }
-      .project-link:hover { gap: 10px; }
+      .project-link:hover {
+        color: var(--text);
+      }
 
-      /* ─────────────────────────────────────────────
-         CONTACT
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       PUBLISH — numbered rows, lighter
+    ───────────────────────────────────────── */
+      .publish-row {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 0 32px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .publish-name {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 10px;
+        line-height: 1.3;
+        letter-spacing: -0.005em;
+      }
+
+      .publish-desc {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-mid);
+        line-height: 1.85;
+        margin-bottom: 20px;
+        max-width: 620px;
+        letter-spacing: 0.01em;
+      }
+
+      .publish-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .publish-link {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-mid);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: auto;
+        transition: color 0.15s;
+      }
+      .publish-link:hover {
+        color: var(--text);
+      }
+
+      /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
       .contact-intro {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 28px; font-weight: 600;
-        color: var(--text); line-height: 1.4;
-        max-width: 500px; margin-bottom: 56px;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 26px;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.35;
+        max-width: 440px;
+        margin-bottom: 52px;
         letter-spacing: -0.01em;
       }
 
-      .contact-list { display: flex; flex-direction: column; }
-
-      .contact-item {
-        display: flex; align-items: center; gap: 20px;
-        padding: 18px 0; border-bottom: 1px solid var(--border);
+      .contact-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0 20px;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
         text-decoration: none;
       }
-      .contact-item:first-child { border-top: 1px solid var(--border); }
-
 
       .contact-key {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px; font-weight: 500;
-        letter-spacing: 0.2em; text-transform: uppercase;
-        color: var(--text-dim); width: 90px; flex-shrink: 0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        transition: color 0.15s;
       }
-      .contact-val {
-        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-        font-size: 15px; font-weight: 400;
-        letter-spacing: 0.01em;
-        color: var(--text-mid); display: flex;
-        align-items: center; gap: 6px;
-      }
-      .contact-key { transition: color 0.15s; }
-      .contact-val { transition: color 0.15s; }
-      .contact-item:hover .contact-key { color: var(--accent); }
-      .contact-item:hover .contact-val { color: var(--text); }
-      .resume-row .contact-val { color: var(--accent-warm); }
-      .resume-row:hover .contact-val { color: var(--accent-warm); filter: brightness(1.15); }
-      .resume-row:hover .contact-key { color: var(--accent-warm) !important; }
 
-      /* ─────────────────────────────────────────────
-         FOOTER
-      ───────────────────────────────────────────── */
+      .contact-val {
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-mid);
+        letter-spacing: 0.01em;
+        transition: color 0.15s;
+      }
+
+      .contact-row:hover .contact-key,
+      .contact-row:hover .contact-val {
+        color: var(--text);
+      }
+
+      /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
       footer {
-        position: relative; z-index: 1;
         border-top: 1px solid var(--border);
         padding: 28px 52px;
-        display: flex; align-items: center;
-        justify-content: space-between; flex-wrap: wrap; gap: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
       }
+
       .footer-mark {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px; color: var(--text-dim);
-        letter-spacing: 0.08em;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 0.1em;
       }
-      .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
-      .footer-nav a {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-        color: var(--text-dim); text-decoration: none;
-      }
-      .footer-nav a:hover { color: var(--accent); }
+
       .footer-copy {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 12px; color: var(--text-dim); letter-spacing: 0.04em;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 0.04em;
       }
 
-      /* ─────────────────────────────────────────────
-         JS-GATED SCROLL ANIMATIONS
-      ───────────────────────────────────────────── */
-
-
-
-
-
-
-        to   { opacity: 1; transform: translateY(0); }
-      }
-
-      /* ─────────────────────────────────────────────
-         NOSCRIPT VISIBILITY
-      ───────────────────────────────────────────── */
-      noscript .about-block,
-      noscript .stack-group,
-      noscript .project-card,
-      noscript .contact-item { opacity: 1 !important; transform: none !important; }
-
-      /* ─────────────────────────────────────────────
-         RESPONSIVE
-      ───────────────────────────────────────────── */
+      /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
       @media (max-width: 768px) {
-        nav { padding: 0 20px; }
-        .nav-links { gap: 18px; }
-        section { padding: 88px 22px; }
-        .hero-name { font-size: 48px; }
-        .about-grid, .stack-grid, .cards-grid { grid-template-columns: 1fr; }
-        .hero-ctas { flex-direction: column; align-items: flex-start; }
-        footer { flex-direction: column; gap: 16px; padding: 22px; text-align: center; }
-        .footer-nav { justify-content: center; }
+        nav {
+          padding: 0 20px;
+        }
+        .nav-links {
+          gap: 18px;
+        }
+        #hero,
+        .section {
+          padding-left: 22px;
+          padding-right: 22px;
+        }
+        #hero {
+          padding-top: 80px;
+        }
+        .hero-name {
+          font-size: 36px;
+        }
+        .about-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .stack-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .project-row,
+        .publish-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .project-num {
+          display: none;
+        }
+        .spec-row {
+          grid-template-columns: 90px 1fr;
+        }
+        .contact-row {
+          grid-template-columns: 90px 1fr;
+        }
+        footer {
+          padding: 22px;
+        }
       }
     </style>
   </head>
@@ -701,11 +921,15 @@
     >
 
     <!-- ── NAV ── -->
-    <nav aria-label="Primary navigation">
+    <nav id="nav" aria-label="Primary navigation">
       <div class="nav-left">
-        <a href="#hero" class="nav-logo" title="Madu Chinemerem Clarence — home"
-          >mc<span>.</span></a
+        <a
+          href="#hero"
+          class="nav-logo"
+          title="Madu Chinemerem Clarence — home"
         >
+          mc<span class="dot">.</span>
+        </a>
         <ul class="nav-links">
           <li><a href="#about" title="About Chinemerem Madu">About</a></li>
           <li><a href="#stack" title="Tech Stack and Skills">Stack</a></li>
@@ -763,17 +987,16 @@
       <!-- ── HERO ── -->
       <section id="hero" aria-label="Introduction">
         <p class="hero-eyebrow">Machine Learning Engineer</p>
-        <h1 class="hero-name" itemprop="name">Madu Chinemerem Clarence</h1>
-        <p class="hero-name-sub">
-          Specializing in <em>Deep Learning</em> &amp; MLOps
+        <h1 class="hero-name" itemprop="name">Madu Chinemerem<br />Clarence</h1>
+        <p class="hero-specialization">
+          Specializing in Deep Learning &amp; MLOps
         </p>
         <p class="hero-subtitle">
           Building scalable ML pipelines and deploying high-accuracy models.
           Focused on production ML systems that ship and stay shipped.
         </p>
         <p class="hero-availability">
-          Open to full-time, contract &amp; research roles &mdash; Remote &bull;
-          Worldwide
+          Open to full-time, contract &amp; research roles — Remote · Worldwide
         </p>
         <div class="hero-ctas">
           <a
@@ -782,57 +1005,57 @@
             title="View ML Engineering Projects"
             >View Projects</a
           >
-          <a
-            href="#contact"
-            class="btn btn-ghost"
-            title="Get in Touch with Chinemerem Madu"
+          <a href="#contact" class="btn btn-ghost" title="Get in Touch"
             >Get in Touch</a
           >
           <a
             href="resume.pdf"
             target="_blank"
             rel="noopener"
-            class="btn btn-resume"
-            title="Download Chinemerem Madu Resume PDF"
+            class="btn btn-ghost"
+            title="Download Resume PDF"
             >Résumé ↗</a
           >
         </div>
       </section>
 
       <!-- ── ABOUT ── -->
-      <section id="about" aria-labelledby="about-label">
-        <h2 class="label" id="about-label">About</h2>
-        <div class="about-grid">
-          <div class="about-block">
-            <p class="about-block-key">Background</p>
-            <p>
+      <section id="about" class="section" aria-labelledby="about-label">
+        <h2 class="section-label" id="about-label">About</h2>
+        <div style="border-top: 1px solid var(--border)">
+          <div class="about-row">
+            <span class="row-label">Background</span>
+            <p class="row-text">
               Freelance Machine Learning Engineer with hands-on experience
               designing and deploying end-to-end ML systems — from raw data
               ingestion to production inference. I work across the full stack:
               data pipelines, model training, evaluation, and cloud deployment.
             </p>
           </div>
-          <div class="about-block">
-            <p class="about-block-key">Specialization</p>
-            <p>
+
+          <div class="about-row">
+            <span class="row-label">Specialization</span>
+            <p class="row-text">
               Deep learning, MLOps, and distributed backend infrastructure. I
               focus on building systems that are reproducible, monitored, and
               designed to stay reliable under real production load — not just in
               a Jupyter notebook.
             </p>
           </div>
-          <div class="about-block">
-            <p class="about-block-key">Approach</p>
-            <p>
+
+          <div class="about-row">
+            <span class="row-label">Approach</span>
+            <p class="row-text">
               Every architectural decision is justified by the problem
               constraints — dataset size, latency budget, compute cost, and
               interpretability requirements. I choose the simplest model that
               solves the problem verifiably well.
             </p>
           </div>
-          <div class="about-block">
-            <p class="about-block-key">Open Source</p>
-            <p>
+
+          <div class="about-row">
+            <span class="row-label">Open Source</span>
+            <p class="row-text">
               I build in public. Several of my tools exist because I needed them
               and they didn't. Open source is how I verify my work against
               real-world constraints beyond my own projects.
@@ -843,481 +1066,429 @@
           See how I apply this —
           <a
             href="#projects"
-            class="inline-link"
+            class="cta-link"
             title="View ML Engineering Projects"
             >browse my projects</a
           >
           or
-          <a href="#stack" class="inline-link" title="View Tech Stack"
+          <a href="#stack" class="cta-link" title="View Tech Stack"
             >explore my stack</a
           >.
         </p>
       </section>
 
       <!-- ── STACK ── -->
-      <section id="stack" aria-labelledby="stack-label">
-        <h2 class="label" id="stack-label">Stack &amp; Skills</h2>
+      <section id="stack" class="section" aria-labelledby="stack-label">
+        <h2 class="section-label" id="stack-label">Stack &amp; Skills</h2>
         <div class="stack-grid">
-          <div class="stack-group">
+          <div>
             <h3 class="stack-group-title">Languages</h3>
             <ul class="stack-list">
-              <li>
-                <strong>Python</strong> — Primary language for all ML/DL work,
-                data pipelines, and scripting.
-              </li>
-              <li>
-                <strong>C++</strong> — High-performance inference code and GPU
-                kernel interfacing.
-              </li>
-              <li>
-                <strong>Rust</strong> — Memory-safe, high-throughput backend
-                services and data processing tools.
-              </li>
-              <li>
-                <strong>Scala / Java</strong> — Distributed dataset processing
-                at scale via big data infrastructure.
-              </li>
-              <li>
-                <strong>SQL</strong> — Complex queries, schema design, and
-                structured dataset retrieval.
-              </li>
+              <li>Python</li>
+              <li>C++</li>
+              <li>Rust</li>
+              <li>Scala / Java</li>
+              <li>SQL</li>
             </ul>
           </div>
 
-          <div class="stack-group">
+          <div>
             <h3 class="stack-group-title">ML / DL</h3>
             <ul class="stack-list">
-              <li>
-                <strong>PyTorch</strong> — Primary deep learning framework.
-                Custom training loops, autograd, tensor ops.
-              </li>
-              <li>
-                <strong>TensorFlow &amp; Keras</strong> — Production-ready model
-                training and scalable neural network design.
-              </li>
-              <li>
-                <strong>Scikit-Learn</strong> — Classical ML: classification,
-                regression, clustering, hyperparameter search.
-              </li>
-              <li>
-                <strong>Hugging Face Transformers</strong> — Fine-tuning LLMs
-                and vision models on domain-specific datasets.
-              </li>
-              <li>
-                <strong>LangChain</strong> — RAG pipelines, agent orchestration,
-                and LLM-powered application design.
-              </li>
-              <li>
-                <strong>ONNX</strong> — Cross-platform model export and
-                inference optimization.
-              </li>
-              <li>
-                <strong>MLflow</strong> — Experiment tracking, model registry,
-                and reproducible ML workflows.
-              </li>
+              <li>PyTorch</li>
+              <li>TensorFlow &amp; Keras</li>
+              <li>Scikit-Learn</li>
+              <li>Hugging Face Transformers</li>
+              <li>LangChain</li>
+              <li>ONNX</li>
+              <li>MLflow</li>
             </ul>
           </div>
 
-          <div class="stack-group">
+          <div>
             <h3 class="stack-group-title">Infra / MLOps</h3>
             <ul class="stack-list">
-              <li>
-                <strong>AWS</strong> — SageMaker, ECS Fargate, RDS, ElastiCache,
-                ECR, Amazon MQ.
-              </li>
-              <li>
-                <strong>Docker &amp; Kubernetes</strong> — Containerized model
-                serving and orchestrated deployment at scale.
-              </li>
-              <li>
-                <strong>GitHub Actions</strong> — CI/CD pipelines for automated
-                training, testing, and deployment.
-              </li>
-              <li>
-                <strong>FastAPI</strong> — High-performance async model serving
-                APIs with JWT auth and polling.
-              </li>
-              <li>
-                <strong>RabbitMQ &amp; Redis</strong> — Message queuing and
-                caching for distributed ML backend systems.
-              </li>
-              <li>
-                <strong>PostgreSQL</strong> — Relational data storage for
-                structured training datasets and application state.
-              </li>
-              <li>
-                <strong>Linux / Ubuntu</strong> — Production server management,
-                filesystem ops, hardware driver interfacing.
-              </li>
+              <li>AWS (SageMaker, ECS, RDS, ECR)</li>
+              <li>Docker &amp; Kubernetes</li>
+              <li>GitHub Actions</li>
+              <li>FastAPI</li>
+              <li>RabbitMQ &amp; Redis</li>
+              <li>PostgreSQL</li>
+              <li>Linux / Ubuntu</li>
             </ul>
           </div>
 
-          <div class="stack-group">
+          <div>
             <h3 class="stack-group-title">Math / Theory</h3>
             <ul class="stack-list">
-              <li>
-                <strong>Linear Algebra</strong> — Matrix ops, tensor
-                decompositions, eigenvalue analysis for neural architectures.
-              </li>
-              <li>
-                <strong>Calculus &amp; Optimization</strong> — Gradient descent,
-                backpropagation, second-order methods.
-              </li>
-              <li>
-                <strong>Probability &amp; Statistics</strong> — Distributions,
-                Bayesian inference, hypothesis testing, model evaluation.
-              </li>
-              <li>
-                <strong>Information Theory</strong> — Cross-entropy, KL
-                divergence, mutual information in model design.
-              </li>
-              <li>
-                <strong>ETL &amp; Feature Engineering</strong> —
-                Extract-Transform-Load pipelines, feature selection, data
-                augmentation.
-              </li>
+              <li>Linear Algebra</li>
+              <li>Calculus &amp; Optimization</li>
+              <li>Probability &amp; Statistics</li>
+              <li>Information Theory</li>
+              <li>ETL &amp; Feature Engineering</li>
             </ul>
           </div>
         </div>
       </section>
 
       <!-- ── PROJECTS ── -->
-      <section id="projects" aria-labelledby="projects-label">
-        <h2 class="label" id="projects-label">Projects</h2>
-        <div class="cards-grid">
-          <article class="project-card">
-            <p class="project-num">01</p>
-            <h3 class="project-name">Météo-Agri CI</h3>
-            <p class="project-desc">
-              Real-time agricultural weather intelligence platform for Côte
-              d'Ivoire. Ingests live meteorological API data, computes
-              crop-specific risk scores, and surfaces actionable regional
-              forecasts.
-            </p>
+      <section id="projects" class="section" aria-labelledby="projects-label">
+        <h2 class="section-label" id="projects-label">Projects</h2>
+        <div style="border-top: 1px solid var(--border)">
+          <!-- 01 -->
+          <article class="project-row">
+            <span class="project-num">01</span>
+            <div>
+              <h3 class="project-name">Météo-Agri CI</h3>
+              <p class="project-desc">
+                Real-time agricultural weather intelligence platform for Côte
+                d'Ivoire. Ingests live meteorological API data, computes
+                crop-specific risk scores, and surfaces actionable regional
+                forecasts.
+              </p>
 
-            <div class="abstract-grid">
-              <div class="abstract-field">
-                <span class="abstract-label">Dataset</span>
-                <span class="abstract-value"
-                  >Live feeds from OpenWeatherMap API —
-                  <strong>7 agro-climatic zones</strong>, 72-hour rolling
-                  window. Replace with actual dataset size.</span
+              <div class="spec-row">
+                <span class="spec-label">Dataset</span>
+                <span class="spec-value"
+                  >Live feeds from OpenWeatherMap API — 7 agro-climatic zones,
+                  72-hour rolling window. Replace with actual dataset
+                  size.</span
                 >
               </div>
-              <div class="abstract-field">
-                <span class="abstract-label">Architecture</span>
-                <span class="abstract-value"
-                  ><strong>Rule-based + threshold classifier</strong> on
-                  normalized meteorological features. Chosen for
-                  interpretability and low inference latency in production.
-                  Replace with actual model.</span
+              <div class="spec-row">
+                <span class="spec-label">Architecture</span>
+                <span class="spec-value"
+                  >Rule-based + threshold classifier on normalized
+                  meteorological features. Chosen for interpretability and low
+                  inference latency in production. Replace with actual
+                  model.</span
+                >
+              </div>
+              <div class="spec-row" style="margin-bottom: 18px">
+                <span class="spec-label">Metrics</span>
+                <div class="metrics-wrap">
+                  <span class="metric-pill">Replace with real F1 score</span>
+                  <span class="metric-pill">Replace with real latency</span>
+                  <span class="metric-pill">Replace with real uptime</span>
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Stack</span>
+                <span class="spec-value"
+                  >Python · Streamlit · OpenWeatherMap API · AWS · GitHub
+                  Actions CI/CD</span
+                >
+              </div>
+
+              <div class="project-footer">
+                <span class="tag">Python</span
+                ><span class="tag">Streamlit</span> <span class="tag">AWS</span
+                ><span class="tag">CI/CD</span>
+                <a href="#" class="project-link" title="View Météo-Agri CI"
+                  >View project →</a
                 >
               </div>
             </div>
-
-            <div class="metrics-row">
-              <span class="metric-pill">Replace with real F1 score</span>
-              <span class="metric-pill">Replace with real latency</span>
-              <span class="metric-pill">Replace with real uptime</span>
-            </div>
-
-            <div class="abstract-field" style="margin-bottom: 20px">
-              <span class="abstract-label">Stack</span>
-              <span class="abstract-value"
-                >Python · Streamlit · OpenWeatherMap API · AWS · GitHub Actions
-                CI/CD</span
-              >
-            </div>
-
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Streamlit</span
-              ><span class="tag">AWS</span><span class="tag">CI/CD</span>
-            </div>
-            <a href="#" class="project-link" title="View Météo-Agri CI project"
-              >View project →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">02</p>
-            <h3 class="project-name">WaveShare</h3>
-            <p class="project-desc">
-              Open-source async P2P file transfer library. Solves the problem of
-              dependency-free device-to-device transfer without a cloud relay —
-              BLE discovery, direct TCP streaming, cryptographic integrity.
-            </p>
+          <!-- 02 -->
+          <article class="project-row">
+            <span class="project-num">02</span>
+            <div>
+              <h3 class="project-name">WaveShare</h3>
+              <p class="project-desc">
+                Open-source async P2P file transfer library. Solves the problem
+                of dependency-free device-to-device transfer without a cloud
+                relay — BLE discovery, direct TCP streaming, cryptographic
+                integrity.
+              </p>
 
-            <div class="abstract-grid">
-              <div class="abstract-field">
-                <span class="abstract-label">Dataset</span>
-                <span class="abstract-value"
-                  >N/A — systems library. Benchmarked across
-                  <strong>file sizes 1KB–2GB</strong> on constrained edge
-                  hardware. Replace with actual benchmark conditions.</span
+              <div class="spec-row">
+                <span class="spec-label">Dataset</span>
+                <span class="spec-value"
+                  >N/A — systems library. Benchmarked across file sizes 1KB–2GB
+                  on constrained edge hardware. Replace with actual benchmark
+                  conditions.</span
                 >
               </div>
-              <div class="abstract-field">
-                <span class="abstract-label">Architecture</span>
-                <span class="abstract-value"
-                  ><strong
-                    >Async BLE scanner (bleak) + direct TCP socket
-                    stream.</strong
+              <div class="spec-row">
+                <span class="spec-label">Architecture</span>
+                <span class="spec-value"
+                  >Async BLE scanner (bleak) + direct TCP socket stream. BLE
+                  chosen over mDNS for battery-constrained devices. SHA-256 for
+                  integrity over TLS for zero-dependency simplicity.</span
+                >
+              </div>
+              <div class="spec-row" style="margin-bottom: 18px">
+                <span class="spec-label">Metrics</span>
+                <div class="metrics-wrap">
+                  <span class="metric-pill"
+                    >Replace with real throughput MB/s</span
                   >
-                  BLE chosen over mDNS for battery-constrained devices. SHA-256
-                  for integrity over TLS for zero-dependency simplicity.</span
+                  <span class="metric-pill"
+                    >Replace with real discovery latency</span
+                  >
+                  <span class="metric-pill"
+                    >0 dropped bytes — SHA-256 verified</span
+                  >
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Stack</span>
+                <span class="spec-value"
+                  >Python · bleak (BLE) · asyncio · TCP sockets · SHA-256 ·
+                  GitHub Actions</span
+                >
+              </div>
+
+              <div class="project-footer">
+                <span class="tag">Python</span><span class="tag">BLE</span>
+                <span class="tag">TCP</span><span class="tag">Open Source</span>
+                <a href="#" class="project-link" title="View WaveShare"
+                  >View project →</a
                 >
               </div>
             </div>
-
-            <div class="metrics-row">
-              <span class="metric-pill">Replace with real throughput MB/s</span>
-              <span class="metric-pill"
-                >Replace with real discovery latency</span
-              >
-              <span class="metric-pill"
-                >0 dropped bytes — SHA-256 verified</span
-              >
-            </div>
-
-            <div class="abstract-field" style="margin-bottom: 20px">
-              <span class="abstract-label">Stack</span>
-              <span class="abstract-value"
-                >Python · bleak (BLE) · asyncio · TCP sockets · SHA-256 · GitHub
-                Actions</span
-              >
-            </div>
-
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">BLE</span
-              ><span class="tag">TCP</span><span class="tag">Open Source</span>
-            </div>
-            <a href="#" class="project-link" title="View WaveShare project"
-              >View project →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">03</p>
-            <h3 class="project-name">TPS + Payment Gateway</h3>
-            <p class="project-desc">
-              Distributed financial transaction processing system with async
-              message queuing, JWT-secured API gateway, and a background result
-              consumer. Designed for horizontal scale on AWS.
-            </p>
+          <!-- 03 -->
+          <article class="project-row">
+            <span class="project-num">03</span>
+            <div>
+              <h3 class="project-name">TPS + Payment Gateway</h3>
+              <p class="project-desc">
+                Distributed financial transaction processing system with async
+                message queuing, JWT-secured API gateway, and a background
+                result consumer. Designed for horizontal scale on AWS.
+              </p>
 
-            <div class="abstract-grid">
-              <div class="abstract-field">
-                <span class="abstract-label">Dataset</span>
-                <span class="abstract-value"
-                  >Synthetic transaction stream — <strong>10k+ TPS</strong> load
-                  tested in staging. Replace with actual load test
-                  parameters.</span
+              <div class="spec-row">
+                <span class="spec-label">Dataset</span>
+                <span class="spec-value"
+                  >Synthetic transaction stream — 10k+ TPS load tested in
+                  staging. Replace with actual load test parameters.</span
                 >
               </div>
-              <div class="abstract-field">
-                <span class="abstract-label">Architecture</span>
-                <span class="abstract-value"
-                  ><strong>FastAPI + RabbitMQ + asyncpg + Redis.</strong>
-                  RabbitMQ chosen over Kafka for lower operational overhead at
-                  target TPS. Redis for result caching and session state.</span
+              <div class="spec-row">
+                <span class="spec-label">Architecture</span>
+                <span class="spec-value"
+                  >FastAPI + RabbitMQ + asyncpg + Redis. RabbitMQ chosen over
+                  Kafka for lower operational overhead at target TPS. Redis for
+                  result caching and session state.</span
+                >
+              </div>
+              <div class="spec-row" style="margin-bottom: 18px">
+                <span class="spec-label">Metrics</span>
+                <div class="metrics-wrap">
+                  <span class="metric-pill">Replace with real TPS</span>
+                  <span class="metric-pill">Replace with real p99 latency</span>
+                  <span class="metric-pill">Replace with real error rate</span>
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Stack</span>
+                <span class="spec-value"
+                  >FastAPI · RabbitMQ · asyncpg · Redis · Docker Compose · AWS
+                  ECS Fargate · RDS · ECR</span
+                >
+              </div>
+
+              <div class="project-footer">
+                <span class="tag">FastAPI</span
+                ><span class="tag">RabbitMQ</span> <span class="tag">Redis</span
+                ><span class="tag">Docker</span>
+                <a href="#" class="project-link" title="View TPS project"
+                  >View project →</a
                 >
               </div>
             </div>
-
-            <div class="metrics-row">
-              <span class="metric-pill">Replace with real TPS</span>
-              <span class="metric-pill">Replace with real p99 latency</span>
-              <span class="metric-pill">Replace with real error rate</span>
-            </div>
-
-            <div class="abstract-field" style="margin-bottom: 20px">
-              <span class="abstract-label">Stack</span>
-              <span class="abstract-value"
-                >FastAPI · RabbitMQ · asyncpg · Redis · Docker Compose · AWS ECS
-                Fargate · RDS · ECR</span
-              >
-            </div>
-
-            <div class="tags">
-              <span class="tag">FastAPI</span><span class="tag">RabbitMQ</span
-              ><span class="tag">Redis</span><span class="tag">Docker</span>
-            </div>
-            <a href="#" class="project-link" title="View TPS project"
-              >View project →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">04</p>
-            <h3 class="project-name">Spotify Notifier</h3>
-            <p class="project-desc">
-              Headless backend daemon for Spotify release monitoring. Zero
-              browser dependencies, zero GUI — pure server-side polling, delta
-              detection, and SMTP dispatch via cron.
-            </p>
+          <!-- 04 -->
+          <article class="project-row">
+            <span class="project-num">04</span>
+            <div>
+              <h3 class="project-name">Spotify Notifier</h3>
+              <p class="project-desc">
+                Headless backend daemon for Spotify release monitoring. Zero
+                browser dependencies, zero GUI — pure server-side polling, delta
+                detection, and SMTP dispatch via cron.
+              </p>
 
-            <div class="abstract-grid">
-              <div class="abstract-field">
-                <span class="abstract-label">Dataset</span>
-                <span class="abstract-value"
-                  >Spotify Web API — <strong>N followed artists</strong>,
-                  polling on configurable interval. Stateless diff against
-                  last-seen release IDs stored in flat file.</span
+              <div class="spec-row">
+                <span class="spec-label">Dataset</span>
+                <span class="spec-value"
+                  >Spotify Web API — N followed artists, polling on configurable
+                  interval. Stateless diff against last-seen release IDs stored
+                  in flat file.</span
                 >
               </div>
-              <div class="abstract-field">
-                <span class="abstract-label">Architecture</span>
-                <span class="abstract-value"
-                  ><strong>Spotipy + smtplib + cron.</strong> Deliberately
-                  dependency-minimal. No message queue — release frequency makes
-                  simple polling sufficient at this scale.</span
+              <div class="spec-row">
+                <span class="spec-label">Architecture</span>
+                <span class="spec-value"
+                  >Spotipy + smtplib + cron. Deliberately dependency-minimal. No
+                  message queue — release frequency makes simple polling
+                  sufficient at this scale.</span
+                >
+              </div>
+              <div class="spec-row" style="margin-bottom: 18px">
+                <span class="spec-label">Metrics</span>
+                <div class="metrics-wrap">
+                  <span class="metric-pill"
+                    >&lt;2s end-to-end alert latency</span
+                  >
+                  <span class="metric-pill">0 missed releases in testing</span>
+                  <span class="metric-pill"
+                    >Replace with real runtime stats</span
+                  >
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Stack</span>
+                <span class="spec-value"
+                  >Python · Spotipy · smtplib · cron · Linux systemd</span
+                >
+              </div>
+
+              <div class="project-footer">
+                <span class="tag">Python</span><span class="tag">Spotipy</span>
+                <span class="tag">smtplib</span><span class="tag">Cron</span>
+                <a href="#" class="project-link" title="View Spotify Notifier"
+                  >View project →</a
                 >
               </div>
             </div>
-
-            <div class="metrics-row">
-              <span class="metric-pill">&lt;2s end-to-end alert latency</span>
-              <span class="metric-pill">0 missed releases in testing</span>
-              <span class="metric-pill">Replace with real runtime stats</span>
-            </div>
-
-            <div class="abstract-field" style="margin-bottom: 20px">
-              <span class="abstract-label">Stack</span>
-              <span class="abstract-value"
-                >Python · Spotipy · smtplib · cron · Linux systemd</span
-              >
-            </div>
-
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Spotipy</span
-              ><span class="tag">smtplib</span><span class="tag">Cron</span>
-            </div>
-            <a
-              href="#"
-              class="project-link"
-              title="View Spotify Notifier project"
-              >View project →</a
-            >
           </article>
         </div>
         <p class="section-cta">
           I also write about ML engineering —
-          <a
-            href="#publish"
-            class="inline-link"
-            title="Read published papers and posts"
+          <a href="#publish" class="cta-link" title="Read published work"
             >read my published work</a
           >.
         </p>
       </section>
 
       <!-- ── PUBLISH ── -->
-      <section id="publish" aria-labelledby="publish-label">
-        <h2 class="label" id="publish-label">Publish</h2>
-        <div class="cards-grid">
-          <article class="project-card">
-            <p class="project-num">01</p>
-            <h3 class="project-name">
-              Anomaly Detection in Agricultural Time-Series Using Lightweight
-              Transformer Encoders
-            </h3>
-            <p class="project-desc">
-              Explores efficient transformer-based methods for detecting
-              anomalies in sparse, noisy IoT sensor streams from agricultural
-              deployments — with a focus on low-latency inference in production.
-              Replace with your abstract.
-            </p>
-            <div class="tags">
-              <span class="tag">PyTorch</span
-              ><span class="tag">Time-Series</span
-              ><span class="tag">Transformers</span><span class="tag">IoT</span>
+      <section id="publish" class="section" aria-labelledby="publish-label">
+        <h2 class="section-label" id="publish-label">Publish</h2>
+        <div style="border-top: 1px solid var(--border)">
+          <article class="publish-row">
+            <span class="project-num">01</span>
+            <div>
+              <h3 class="publish-name">
+                Anomaly Detection in Agricultural Time-Series Using Lightweight
+                Transformer Encoders
+              </h3>
+              <p class="publish-desc">
+                Explores efficient transformer-based methods for detecting
+                anomalies in sparse, noisy IoT sensor streams from agricultural
+                deployments — with a focus on low-latency inference in
+                production. Replace with your abstract.
+              </p>
+              <div class="publish-footer">
+                <span class="tag">PyTorch</span
+                ><span class="tag">Time-Series</span>
+                <span class="tag">Transformers</span
+                ><span class="tag">IoT</span>
+                <a href="#" class="publish-link" title="View publish 01"
+                  >Read →</a
+                >
+              </div>
             </div>
-            <a href="#" class="project-link" title="View published work 01"
-              >View publish →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">02</p>
-            <h3 class="project-name">
-              BLE-Assisted Peer Discovery for Low-Latency P2P Data Transfer in
-              Constrained Environments
-            </h3>
-            <p class="project-desc">
-              Formalises a hybrid BLE-discovery + TCP-streaming protocol for
-              resource-constrained edge devices, with SHA-256 integrity
-              verification and benchmarks against existing P2P approaches.
-              Replace with your abstract.
-            </p>
-            <div class="tags">
-              <span class="tag">Networking</span><span class="tag">BLE</span
-              ><span class="tag">Rust</span
-              ><span class="tag">Edge Computing</span>
+          <article class="publish-row">
+            <span class="project-num">02</span>
+            <div>
+              <h3 class="publish-name">
+                BLE-Assisted Peer Discovery for Low-Latency P2P Data Transfer in
+                Constrained Environments
+              </h3>
+              <p class="publish-desc">
+                Formalises a hybrid BLE-discovery + TCP-streaming protocol for
+                resource-constrained edge devices, with SHA-256 integrity
+                verification and benchmarks against existing P2P approaches.
+                Replace with your abstract.
+              </p>
+              <div class="publish-footer">
+                <span class="tag">Networking</span><span class="tag">BLE</span>
+                <span class="tag">Rust</span
+                ><span class="tag">Edge Computing</span>
+                <a href="#" class="publish-link" title="View publish 02"
+                  >Read →</a
+                >
+              </div>
             </div>
-            <a href="#" class="project-link" title="View published work 02"
-              >View publish →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">03</p>
-            <h3 class="project-name">
-              On Building ML Pipelines That Don't Embarrass You at 3am
-            </h3>
-            <p class="project-desc">
-              A field guide to production-grade ML infra — what actually breaks,
-              why it breaks quietly, and the structural patterns that prevent
-              3am incidents. Replace with your intro paragraph.
-            </p>
-            <div class="tags">
-              <span class="tag">MLOps</span><span class="tag">Python</span
-              ><span class="tag">Production</span
-              ><span class="tag">Infrastructure</span>
+          <article class="publish-row">
+            <span class="project-num">03</span>
+            <div>
+              <h3 class="publish-name">
+                On Building ML Pipelines That Don't Embarrass You at 3am
+              </h3>
+              <p class="publish-desc">
+                A field guide to production-grade ML infra — what actually
+                breaks, why it breaks quietly, and the structural patterns that
+                prevent 3am incidents. Replace with your intro paragraph.
+              </p>
+              <div class="publish-footer">
+                <span class="tag">MLOps</span><span class="tag">Python</span>
+                <span class="tag">Production</span
+                ><span class="tag">Infrastructure</span>
+                <a href="#" class="publish-link" title="View publish 03"
+                  >Read →</a
+                >
+              </div>
             </div>
-            <a href="#" class="project-link" title="View published work 03"
-              >View publish →</a
-            >
           </article>
 
-          <article class="project-card">
-            <p class="project-num">04</p>
-            <h3 class="project-name">
-              The Case for Going Fully Headless in Backend ML Systems
-            </h3>
-            <p class="project-desc">
-              Why stripping browser dependencies, GUIs, and interactive runtimes
-              from ML backends leads to leaner deployments, reproducible
-              cron-based workflows, and fewer moving parts to debug. Replace
-              with your intro paragraph.
-            </p>
-            <div class="tags">
-              <span class="tag">Architecture</span
-              ><span class="tag">Python</span><span class="tag">Backend</span
-              ><span class="tag">Systems Design</span>
+          <article class="publish-row">
+            <span class="project-num">04</span>
+            <div>
+              <h3 class="publish-name">
+                The Case for Going Fully Headless in Backend ML Systems
+              </h3>
+              <p class="publish-desc">
+                Why stripping browser dependencies, GUIs, and interactive
+                runtimes from ML backends leads to leaner deployments,
+                reproducible cron-based workflows, and fewer moving parts to
+                debug. Replace with your intro paragraph.
+              </p>
+              <div class="publish-footer">
+                <span class="tag">Architecture</span
+                ><span class="tag">Python</span> <span class="tag">Backend</span
+                ><span class="tag">Systems Design</span>
+                <a href="#" class="publish-link" title="View publish 04"
+                  >Read →</a
+                >
+              </div>
             </div>
-            <a href="#" class="project-link" title="View published work 04"
-              >View publish →</a
-            >
           </article>
         </div>
         <p class="section-cta">
           Interested in collaborating?
-          <a href="#contact" class="inline-link" title="Contact Chinemerem Madu"
+          <a href="#contact" class="cta-link" title="Contact Chinemerem Madu"
             >get in touch</a
           >.
         </p>
       </section>
 
       <!-- ── CONTACT ── -->
-      <section id="contact" aria-labelledby="contact-label">
-        <h2 class="label" id="contact-label">Contact</h2>
+      <section
+        id="contact"
+        class="section"
+        style="padding-bottom: 120px"
+        aria-labelledby="contact-label"
+      >
+        <h2 class="section-label" id="contact-label">Contact</h2>
         <p class="contact-intro">
           Have something worth building?<br />Let's talk.
         </p>
-        <div class="contact-list">
+        <div style="border-top: 1px solid var(--border)">
           <a
             href="mailto:Chinemerem.Madu@proton.me"
-            class="contact-item"
+            class="contact-row"
             title="Email Chinemerem Madu"
           >
             <span class="contact-key">Email</span>
@@ -1327,8 +1498,8 @@
             href="https://github.com/Clarence6174"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on GitHub"
+            class="contact-row"
+            title="GitHub"
           >
             <span class="contact-key">GitHub</span>
             <span class="contact-val">github.com/Clarence6174</span>
@@ -1337,8 +1508,8 @@
             href="https://www.linkedin.com/in/chinemerem-madu-8875a93b0"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on LinkedIn"
+            class="contact-row"
+            title="LinkedIn"
           >
             <span class="contact-key">LinkedIn</span>
             <span class="contact-val">chinemerem-madu-8875a93b0</span>
@@ -1347,8 +1518,8 @@
             href="https://twitter.com/It_is_clarence"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on Twitter"
+            class="contact-row"
+            title="Twitter"
           >
             <span class="contact-key">Twitter</span>
             <span class="contact-val">@It_is_clarence</span>
@@ -1357,8 +1528,8 @@
             href="https://medium.com/@chinemeremmadu"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on Medium"
+            class="contact-row"
+            title="Medium"
           >
             <span class="contact-key">Medium</span>
             <span class="contact-val">@chinemeremmadu</span>
@@ -1367,8 +1538,8 @@
             href="https://huggingface.co/ChinemeremMadu"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on HuggingFace"
+            class="contact-row"
+            title="HuggingFace"
           >
             <span class="contact-key">HuggingFace</span>
             <span class="contact-val">ChinemeremMadu</span>
@@ -1377,8 +1548,8 @@
             href="https://t.me/madu_clarence"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu on Telegram"
+            class="contact-row"
+            title="Telegram"
           >
             <span class="contact-key">Telegram</span>
             <span class="contact-val">@madu_clarence</span>
@@ -1388,8 +1559,8 @@
             href="https://orcid.org/0009-0009-6911-2442"
             target="_blank"
             rel="me noopener noreferrer"
-            class="contact-item"
-            title="Chinemerem Madu ORCID Profile"
+            class="contact-row"
+            title="ORCID"
           >
             <span class="contact-key">ORCID</span>
             <span class="contact-val">0009-0009-6911-2442</span>
@@ -1398,8 +1569,8 @@
             href="resume.pdf"
             target="_blank"
             rel="noopener"
-            class="contact-item resume-row"
-            title="Download Chinemerem Madu Resume PDF"
+            class="contact-row"
+            title="Download Resume"
           >
             <span class="contact-key">Résumé</span>
             <span class="contact-val">Download PDF ↗</span>
@@ -1411,34 +1582,8 @@
     <!-- ── FOOTER ── -->
     <footer>
       <span class="footer-mark">entropy → elegance.</span>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#about" title="About Chinemerem Madu">About</a>
-        <a href="#stack" title="Tech Stack and Skills">Stack</a>
-        <a href="#projects" title="ML Engineering Projects">Projects</a>
-        <a href="#publish" title="Published Work">Publish</a>
-        <a href="#contact" title="Contact Chinemerem Madu">Contact</a>
-      </nav>
       <span class="footer-copy">© 2026 Madu Chinemerem Clarence</span>
     </footer>
-
-    <script>
-      (function () {
-        var saved = localStorage.getItem("mc-theme") || "dark";
-        document.documentElement.setAttribute("data-theme", saved);
-      })();
-      document.addEventListener("DOMContentLoaded", function () {
-        document
-          .getElementById("themeToggle")
-          .addEventListener("click", function () {
-            var next =
-              document.documentElement.getAttribute("data-theme") === "dark"
-                ? "light"
-                : "dark";
-            document.documentElement.setAttribute("data-theme", next);
-            localStorage.setItem("mc-theme", next);
-          });
-      });
-    </script>
 
     <!-- ── MICROSOFT CLARITY ── -->
     <script>
@@ -1462,8 +1607,9 @@
       );
     </script>
 
+    <!-- ── THEME + NAV SCROLL ── -->
     <script>
-      // ── Theme toggle ─────────────────────────────────────────────────────────
+      // Theme toggle
       document.getElementById("themeToggle").addEventListener(
         "click",
         function () {
@@ -1481,8 +1627,16 @@
         { passive: true },
       );
 
-      // ── Live clock in nav (optional — remove if not wanted) ──────────────────
-      // (none added — keeping nav clean)
+      // Nav border on scroll
+      window.addEventListener(
+        "scroll",
+        function () {
+          document
+            .getElementById("nav")
+            .classList.toggle("scrolled", window.scrollY > 20);
+        },
+        { passive: true },
+      );
     </script>
   </body>
 </html>
