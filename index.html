@@ -10,7 +10,7 @@
     <!-- ── PRIMARY SEO ── -->
     <meta
       name="description"
-      content="Chinemerem Madu | Software Engineer specializing in Machine Learning, niche in Deep Learning. From research to production — end-to-end ML systems, pipelines, and MLOps. Open to full-time, contract &amp; research roles."
+      content="Software Engineer · Machine Learning · Deep Learning. End-to-end ML systems, research to production. Open to full-time, contract &amp; research roles."
     />
     <meta
       name="keywords"
@@ -35,7 +35,7 @@
     />
     <meta
       property="og:description"
-      content="Software Engineer specializing in Machine Learning, niche in Deep Learning. End-to-end ML systems from research to production. Open to full-time, contract &amp; research roles."
+      content="Software Engineer · ML · Deep Learning. End-to-end ML systems from research to production. Open to full-time, contract &amp; research roles."
     />
     <meta
       property="og:image"
@@ -65,7 +65,7 @@
     />
     <meta
       name="twitter:description"
-      content="Software Engineer specializing in Machine Learning, niche in Deep Learning. End-to-end ML systems from research to production. Open to full-time, contract &amp; research roles."
+      content="Software Engineer · ML · Deep Learning. End-to-end ML systems from research to production. Open to full-time, contract &amp; research roles."
     />
     <meta
       name="twitter:image"
@@ -134,14 +134,6 @@
 
     <!-- ── PERFORMANCE ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <!-- Preload primary font woff2 for faster LCP -->
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-      href="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KU7NSg.woff2"
-    />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.clarity.ms" />
     <link rel="dns-prefetch" href="https://github.com" />
@@ -230,21 +222,10 @@
         scroll-behavior: smooth;
       }
 
-      /* System font fallback sized to match Plus Jakarta Sans — reduces CLS */
-      @font-face {
-        font-family: "Plus Jakarta Sans Fallback";
-        src: local("Arial");
-        size-adjust: 105%;
-        ascent-override: 96%;
-        descent-override: 22%;
-        line-gap-override: 0%;
-      }
-
       body {
         background: var(--bg);
         color: var(--text);
-        font-family:
-          "Plus Jakarta Sans", "Plus Jakarta Sans Fallback", Arial, sans-serif;
+        font-family: "Plus Jakarta Sans", Arial, sans-serif;
         font-size: 16px;
         line-height: 1.85;
         letter-spacing: 0.01em;
@@ -1016,6 +997,50 @@
       }
     </style>
   </head>
+
+  <!-- Critical above-fold styles — zero external dependency first paint -->
+  <style id="crit">
+    #hero,
+    nav {
+      opacity: 1;
+    }
+    .hero-eyebrow,
+    .hero-name,
+    .hero-specialization,
+    .hero-subtitle,
+    .hero-availability,
+    .hero-ctas {
+      opacity: 1;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 52px;
+      height: 56px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--bg-nav);
+    }
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .hero-name {
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+  </style>
   <body itemscope itemtype="https://schema.org/WebPage">
     <a href="#main-content" class="skip-link" title="Skip to main content"
       >Skip to main content</a
@@ -1746,27 +1771,6 @@
           <a
             class="share-option"
             role="menuitem"
-            href="https://slack.com/intl/en/share?url=https%3A%2F%2Fchinemeremmadu.vercel.app%2F"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"
-              />
-            </svg>
-            Slack
-          </a>
-
-          <a
-            class="share-option"
-            role="menuitem"
             href="mailto:?subject=ML%20Engineer%20Portfolio%20%E2%80%94%20Chinemerem%20Madu&body=https%3A%2F%2Fchinemeremmadu.vercel.app%2F"
           >
             <svg
@@ -1894,15 +1898,47 @@
       document
         .getElementById("copyLinkBtn")
         .addEventListener("click", function () {
-          navigator.clipboard
-            .writeText("https://chinemeremmadu.vercel.app/")
-            .then(function () {
-              var confirm = document.getElementById("copyConfirm");
-              confirm.classList.add("show");
-              setTimeout(function () {
-                confirm.classList.remove("show");
-              }, 2000);
-            });
+          var url = "https://chinemeremmadu.vercel.app/";
+          var confirm = document.getElementById("copyConfirm");
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard
+              .writeText(url)
+              .then(function () {
+                confirm.classList.add("show");
+                setTimeout(function () {
+                  confirm.classList.remove("show");
+                }, 2000);
+              })
+              .catch(function () {
+                // Fallback for clipboard API failure
+                var el = document.createElement("textarea");
+                el.value = url;
+                el.style.position = "fixed";
+                el.style.opacity = "0";
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand("copy");
+                document.body.removeChild(el);
+                confirm.classList.add("show");
+                setTimeout(function () {
+                  confirm.classList.remove("show");
+                }, 2000);
+              });
+          } else {
+            // Fallback for non-secure context
+            var el = document.createElement("textarea");
+            el.value = url;
+            el.style.position = "fixed";
+            el.style.opacity = "0";
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand("copy");
+            document.body.removeChild(el);
+            confirm.classList.add("show");
+            setTimeout(function () {
+              confirm.classList.remove("show");
+            }, 2000);
+          }
         });
 
       // Theme toggle
