@@ -4,12 +4,8 @@
 User-agent: *
 Allow: /
 
-# Disallow any private paths you add later
-# Disallow: /admin/
-# Disallow: /drafts/
+# LLM-readable summary
+# https://chinemeremmadu.vercel.app/llms.txt
 
 # Sitemap location
 Sitemap: https://chinemeremmadu.vercel.app/sitemap.xml
-
-# Crawl-delay hint for slower crawlers (optional)
-# Crawl-delay: 10
