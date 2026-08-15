@@ -1,11 +1,11 @@
-# robots.txt — chinemeremmadu.vercel.app
+# robots.txt — github.io
 # Allow all well-behaved crawlers
 
 User-agent: *
 Allow: /
 
 # LLM-readable summary
-# https://chinemeremmadu.vercel.app/llms.txt
+# https://clarence6174.github.io/llms.txt
 
 # Sitemap location
-Sitemap: https://chinemeremmadu.vercel.app/sitemap.xml
+Sitemap: https://clarence6174.github.io/sitemap.xml

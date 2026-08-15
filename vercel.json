@@ -4,10 +4,9 @@
 
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.chinemeremmadu.vercel.app" }],
-      "destination": "https://chinemeremmadu.vercel.app/:path*",
-      "permanent": true
+      "source": "/(.*)",
+      "destination": "https://clarence6174.github.io",
+      "statusCode": 301
     }
   ],
 
