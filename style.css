@@ -1,0 +1,873 @@
+/* style.css — extracted from index.html <style> blocks */
+
+/* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────
+       TOKENS — DARK
+    ───────────────────────────────────────── */
+:root,
+html[data-theme="dark"] {
+  --bg: #1a1917;
+  --bg-nav: rgba(26, 25, 23, 0.92);
+  --text: #f0ede9;
+  --text-mid: #a09c97;
+  --text-dim: #86827e;
+  --border: #2a2826;
+  --border-hi: #363330;
+}
+
+/* ─────────────────────────────────────────
+       TOKENS — LIGHT
+    ───────────────────────────────────────── */
+html[data-theme="light"] {
+  --bg: #faf9f7;
+  --bg-nav: rgba(250, 249, 247, 0.93);
+  --text: #1a1816;
+  --text-mid: #4a4744;
+  --text-dim: #5a5754;
+  --border: #e0dbd6;
+  --border-hi: #ccc8c3;
+}
+
+/* ─────────────────────────────────────────
+       BASE
+    ───────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ─────────────────────────────────────────
+       SKIP LINK
+    ───────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 12px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 8px 16px;
+  font-size: 11px;
+  font-family: "JetBrains Mono", monospace;
+  text-decoration: none;
+  z-index: 9999;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ─────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px;
+  height: 56px;
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+nav.scrolled {
+  border-bottom-color: var(--border);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-logo {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+.nav-logo .dot {
+  color: var(--text-mid);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover {
+  color: var(--text);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-hi);
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+.theme-toggle:hover {
+  border-color: var(--text-mid);
+  color: var(--text);
+}
+.icon-sun,
+.icon-moon {
+  display: none;
+  width: 13px;
+  height: 13px;
+}
+html[data-theme="dark"] .icon-sun {
+  display: block;
+}
+html[data-theme="light"] .icon-moon {
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+       SECTION WRAPPER
+    ───────────────────────────────────────── */
+.section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 100px 52px;
+  scroll-margin-top: 56px;
+}
+
+/* Section label */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 52px;
+}
+.section-label::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--border-hi);
+}
+
+/* ─────────────────────────────────────────
+       BUTTONS — rounded pill
+    ───────────────────────────────────────── */
+.btn {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 8px 18px;
+  border: 1px solid;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 1 1 0;
+  min-width: 0;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border-color 0.18s;
+}
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--text);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-mid);
+  border-color: var(--border-hi);
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--text-mid);
+}
+
+/* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 80px 52px 100px;
+  scroll-margin-top: 56px;
+}
+
+.hero-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+
+.hero-name {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.hero-specialization {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.hero-subtitle {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.01em;
+  max-width: 480px;
+  line-height: 1.85;
+  margin-bottom: 12px;
+}
+
+.hero-availability {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-bottom: 44px;
+  letter-spacing: 0.01em;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* ─────────────────────────────────────────
+       ABOUT — CV rows
+    ───────────────────────────────────────── */
+.about-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0 24px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.row-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-top: 4px;
+}
+
+.row-text {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* Section CTA link */
+.cta-link {
+  color: var(--text-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-hi);
+  padding-bottom: 1px;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.cta-link:hover {
+  border-bottom-color: var(--text-mid);
+  color: var(--text);
+}
+
+.section-cta {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-top: 28px;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────
+       STACK — 2-col grid, flat list
+    ───────────────────────────────────────── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px 64px;
+}
+
+.stack-group-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 18px;
+}
+
+.stack-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.stack-list li {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.75;
+  padding-left: 16px;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.stack-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--border-hi);
+  top: 5px;
+}
+
+/* ─────────────────────────────────────────
+       PROJECTS — numbered rows, spec sheet
+    ───────────────────────────────────────── */
+.project-row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0 32px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  padding-top: 4px;
+}
+
+.project-name {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.project-desc {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 28px;
+  max-width: 640px;
+  letter-spacing: 0.01em;
+}
+
+/* Spec sheet field row */
+.spec-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0 20px;
+  margin-bottom: 10px;
+  align-items: start;
+}
+
+.spec-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-top: 3px;
+}
+
+.spec-value {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* Metrics row */
+.metrics-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.metric-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-dim);
+  border: 1px solid var(--border-hi);
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* Tags + link row */
+.project-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.project-link {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  transition: color 0.15s;
+}
+.project-link:hover {
+  color: var(--text);
+}
+
+/* ─────────────────────────────────────────
+       PUBLISH — numbered rows, lighter
+    ───────────────────────────────────────── */
+.publish-row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0 32px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.publish-name {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+.publish-desc {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 20px;
+  max-width: 620px;
+  letter-spacing: 0.01em;
+}
+
+.publish-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.publish-link {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  transition: color 0.15s;
+}
+.publish-link:hover {
+  color: var(--text);
+}
+
+/* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+.contact-intro {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+  max-width: 440px;
+  margin-bottom: 52px;
+  letter-spacing: -0.01em;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0 20px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+
+.contact-key {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+
+.contact-val {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-mid);
+  letter-spacing: 0.01em;
+  transition: color 0.15s;
+}
+
+.contact-row:hover .contact-key,
+.contact-row:hover .contact-val {
+  color: var(--text);
+}
+
+/* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-mark {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-copy {
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────
+       SHARE
+    ───────────────────────────────────────── */
+.share-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.share-btn {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.share-btn:hover {
+  color: var(--text);
+}
+
+.share-dropdown {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  min-width: 190px;
+  z-index: 300;
+}
+.share-dropdown.open {
+  display: block;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-mid);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: color 0.15s;
+  letter-spacing: 0.01em;
+}
+.share-option:last-of-type {
+  border-bottom: none;
+}
+.share-option:hover {
+  color: var(--text);
+}
+.share-option svg {
+  opacity: 0.45;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.share-option:hover svg {
+  opacity: 0.9;
+}
+
+.copy-confirm {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 8px 0 2px;
+  display: none;
+  text-align: left;
+}
+.copy-confirm.show {
+  display: block;
+}
+
+/* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 20px;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  #hero,
+  .section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  #hero {
+    padding-top: 80px;
+  }
+  .hero-name {
+    font-size: 36px;
+  }
+  .about-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .stack-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .project-row,
+  .publish-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .project-num {
+    display: none;
+  }
+  .spec-row {
+    grid-template-columns: 90px 1fr;
+  }
+  .contact-row {
+    grid-template-columns: 90px 1fr;
+  }
+  .hero-ctas {
+    flex-wrap: wrap;
+  }
+  .btn {
+    flex: 1 1 calc(50% - 5px);
+  }
+  footer {
+    padding: 22px;
+  }
+}
+
+/* Critical above-fold styles (previously a separate inline <style id="crit"> block,
+   kept last so it still overrides the rules above exactly as it did inline) */
+#hero,
+nav {
+  opacity: 1;
+}
+.hero-eyebrow,
+.hero-name,
+.hero-specialization,
+.hero-subtitle,
+.hero-availability,
+.hero-ctas {
+  opacity: 1;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px;
+  height: 56px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--bg-nav);
+}
+.nav-logo {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+.hero-name {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
